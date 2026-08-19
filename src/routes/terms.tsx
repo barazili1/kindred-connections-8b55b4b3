@@ -1,5 +1,5 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import logo from "@/assets/casino-ai-logo.png";
 import gooobetLogo from "@/assets/g/gooobet.png.asset.json";
@@ -55,6 +55,28 @@ function TermsPage() {
   const [joined, setJoined] = useState(false);
   const [registered, setRegistered] = useState(false);
   const [deposited, setDeposited] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!el) return;
+    el.muted = false;
+    el.volume = 1;
+    const tryPlay = () => {
+      void el.play().catch(() => {
+        const unlock = () => {
+          el.muted = false;
+          void el.play();
+          window.removeEventListener("pointerdown", unlock);
+          window.removeEventListener("touchstart", unlock);
+        };
+        window.addEventListener("pointerdown", unlock, { once: true });
+        window.addEventListener("touchstart", unlock, { once: true });
+      });
+    };
+    tryPlay();
+  }, []);
+
 
   useEffect(() => {
     if (!checking) return;
