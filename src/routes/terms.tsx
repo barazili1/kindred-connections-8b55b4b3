@@ -6,7 +6,6 @@ import gooobetLogo from "@/assets/g/gooobet.png.asset.json";
 import megapariLogo from "@/assets/g/megapari.png.asset.json";
 import paripulseLogo from "@/assets/g/paripulse.png.asset.json";
 import winwinLogo from "@/assets/g/winwin.png.asset.json";
-import { ParticlesBackground } from "@/components/ParticlesBackground";
 import { useUserId } from "@/components/UserIdGate";
 
 export const Route = createFileRoute("/terms")({
@@ -96,7 +95,7 @@ function TermsPage() {
 
   return (
     <>
-      <ParticlesBackground />
+      <div className="pointer-events-none fixed inset-0 z-0 bg-background" />
       {checking ? (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/85 p-5 backdrop-blur-xl">
           <div
@@ -122,7 +121,7 @@ function TermsPage() {
       ) : null}
 
       <main className="relative z-10 min-h-screen pb-28" dir="rtl">
-        <div className="luxe-aurora pointer-events-none fixed inset-x-0 top-0 -z-10 h-[520px] opacity-40 blur-[110px]" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-80 bg-primary/10" />
 
         <header className="sticky top-0 z-30 border-b border-gold/15 bg-background/55 backdrop-blur-2xl">
           <div className="mx-auto flex max-w-2xl items-center justify-between px-4 py-2.5">
@@ -144,7 +143,6 @@ function TermsPage() {
         <div className="mx-auto max-w-2xl px-4">
           {/* Hero */}
           <section className="animate-step-in relative flex flex-col items-center pt-9">
-            <div className="pointer-events-none absolute left-1/2 top-0 h-56 w-56 -translate-x-1/2 rounded-full bg-primary/25 blur-[90px]" />
             <div className="luxe-ring relative rounded-full p-1.5">
               <img
                 src={logo}
@@ -169,7 +167,7 @@ function TermsPage() {
             </p>
 
             {VIDEO_URL ? (
-              <div className="luxe-ring relative mt-4 overflow-hidden rounded-2xl border border-gold/25 bg-background/40">
+              <div className="relative mt-4 flex h-[200px] w-[350px] shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-gold/25 bg-background/40">
                 <video
                   ref={videoRef}
                   src={VIDEO_URL}
@@ -179,8 +177,8 @@ function TermsPage() {
                   playsInline
                   loop
                   controls
-                  preload="auto"
-                  className="block max-w-full border-0"
+                  preload="metadata"
+                  className="block max-h-full max-w-full object-contain"
                 />
               </div>
             ) : null}
