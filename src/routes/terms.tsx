@@ -1,7 +1,7 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 
-import logo from "@/assets/casino-ai-logo.png";
+import logo from "@/assets/brand-logo.jpg";
 import gooobetLogo from "@/assets/platforms/gooobet.png";
 import megapariLogo from "@/assets/platforms/megapari.png";
 import paripulseLogo from "@/assets/platforms/paripulse.png";
@@ -147,9 +147,9 @@ function TermsPage() {
               <img
                 src={logo}
                 alt="Smart Odds logo"
-                width={816}
-                height={816}
-                className="animate-float w-24 drop-shadow-[0_0_44px_oklch(0.66_0.26_300/0.65)]"
+                width={1238}
+                height={864}
+                className="animate-float w-64 max-w-full rounded-2xl drop-shadow-[0_0_44px_oklch(0.66_0.26_300/0.65)]"
               />
             </div>
             <div className="mt-4 flex items-center gap-3">

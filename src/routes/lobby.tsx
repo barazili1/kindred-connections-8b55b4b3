@@ -1,7 +1,7 @@
 import { Link, createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 
-import logo from "@/assets/casino-ai-logo.png";
+import logo from "@/assets/brand-logo.jpg";
 import { ParticlesBackground } from "@/components/ParticlesBackground";
 import { Reveal } from "@/components/Reveal";
 import { useUserId } from "@/components/UserIdGate";
@@ -145,9 +145,9 @@ function Lobby() {
             <img
               src={logo}
               alt="Smart Odds logo"
-              width={816}
-              height={816}
-              className="relative w-24 drop-shadow-[0_0_38px_oklch(0.66_0.26_300/0.65)]"
+              width={1238}
+              height={864}
+              className="relative w-64 max-w-full rounded-2xl drop-shadow-[0_0_38px_oklch(0.66_0.26_300/0.65)]"
             />
             <h1 className="relative mt-3 bg-gradient-to-b from-accent via-foreground to-primary bg-clip-text text-3xl font-extrabold tracking-[0.2em] text-transparent">
               Smart Odds
