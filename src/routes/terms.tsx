@@ -135,9 +135,28 @@ function TermsPage() {
               </h1>
               <span className="h-px w-10 bg-gradient-to-r from-transparent to-gold/70" />
             </div>
-            <p className="relative mt-2 max-w-xs text-center text-[11.5px] leading-relaxed text-muted-foreground">
-              أكمل الخطوات الستة لتفعيل حسابك والحصول على توقعات بدقة تصل إلى 90%
+            <p className="gold-shimmer-text relative mt-3 text-center text-[13px] font-extrabold tracking-wide">
+              اسكربت نسبة الحظ RTB جاهز بالسيستم
             </p>
+            <p className="relative mt-2 max-w-xs text-center text-[11.5px] leading-relaxed text-muted-foreground">
+              سجل دلوقتي وابدأ مكسبك ونفذ الشروط واحصل على نسبه حظ مضمونه 100%
+            </p>
+
+            {VIDEO_URL ? (
+              <div className="luxe-ring relative mt-4 overflow-hidden rounded-2xl border border-gold/25 bg-background/40">
+                <iframe
+                  src={VIDEO_URL}
+                  title="فيديو الشرح"
+                  width={350}
+                  height={200}
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="block max-w-full border-0"
+                />
+              </div>
+            ) : null}
+
           </section>
 
           {/* Timeline */}
