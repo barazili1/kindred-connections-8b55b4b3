@@ -2,10 +2,10 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 
 import logo from "@/assets/casino-ai-logo.png";
-import gooobetLogo from "@/assets/g/gooobet.png.asset.json";
-import megapariLogo from "@/assets/g/megapari.png.asset.json";
-import paripulseLogo from "@/assets/g/paripulse.png.asset.json";
-import winwinLogo from "@/assets/g/winwin.png.asset.json";
+import gooobetLogo from "@/assets/platforms/gooobet.png";
+import megapariLogo from "@/assets/platforms/megapari.png";
+import paripulseLogo from "@/assets/platforms/paripulse.png";
+import winwinLogo from "@/assets/platforms/winwin.png";
 import { useUserId } from "@/components/UserIdGate";
 
 export const Route = createFileRoute("/terms")({
@@ -30,10 +30,10 @@ export const Route = createFileRoute("/terms")({
 });
 
 const platforms = [
-  { id: "gooobet", name: "Gooobet", logo: gooobetLogo.url, url: "https://promogooo.click/Gooo33" },
-  { id: "paripulse", name: "Paripulse", logo: paripulseLogo.url, url: "https://refpa22168.com/L?tag=d_3638295m_64499c_&site=3638295&ad=64499" },
-  { id: "megapari", name: "Megapari", logo: megapariLogo.url, url: "https://2787591.megapari-228091.com" },
-  { id: "winwin", name: "Winwin", logo: winwinLogo.url, url: "https://refpa98980.com/L?tag=d_5876143m_94904c_&site=5876143&ad=94904" },
+  { id: "gooobet", name: "Gooobet", logo: gooobetLogo, url: "https://promogooo.click/Gooo33" },
+  { id: "paripulse", name: "Paripulse", logo: paripulseLogo, url: "https://refpa22168.com/L?tag=d_3638295m_64499c_&site=3638295&ad=64499" },
+  { id: "megapari", name: "Megapari", logo: megapariLogo, url: "https://2787591.megapari-228091.com" },
+  { id: "winwin", name: "Winwin", logo: winwinLogo, url: "https://refpa98980.com/L?tag=d_5876143m_94904c_&site=5876143&ad=94904" },
 ];
 
 const PROMO = "Gooo33";
@@ -214,7 +214,15 @@ function TermsPage() {
                             : "border-gold/25 bg-background/60 grayscale-[0.35] group-hover:grayscale-0"
                         }`}
                       >
-                        <img src={p.logo} alt={p.name} className="h-full w-full object-cover" />
+                        <img
+                          src={p.logo}
+                          alt={p.name}
+                          width={64}
+                          height={64}
+                          loading="eager"
+                          decoding="async"
+                          className="h-full w-full object-cover"
+                        />
                       </span>
                       <span className="w-full truncate px-1 text-center text-[10px] font-bold tracking-wide text-foreground">
                         {p.name}
