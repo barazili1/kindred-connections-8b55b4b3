@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 
 import logo from "@/assets/casino-ai-logo.png";
 import { ParticlesBackground } from "@/components/ParticlesBackground";
+import { Reveal } from "@/components/Reveal";
 import { useUserId } from "@/components/UserIdGate";
 import { games, type Game } from "@/data/games";
 import { slugify } from "@/lib/predict";
@@ -258,6 +259,7 @@ function Lobby() {
               {visible.map((game, i) => {
                 const level = isCasino ? luckMap[game.name]?.level : undefined;
                 return (
+                <Reveal key={game.name} delay={(i % 8) * 60} className="h-full">
                 <CardShell
                   key={game.name}
                   slug={game.category === "instant" ? slugify(game.name) : undefined}
@@ -315,6 +317,7 @@ function Lobby() {
                     </span>
                   </span>
                 </CardShell>
+                </Reveal>
                 );
               })}
             </div>
