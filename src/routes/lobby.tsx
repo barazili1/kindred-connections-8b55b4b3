@@ -258,6 +258,7 @@ function Lobby() {
               {visible.map((game, i) => {
                 const level = isCasino ? luckMap[game.name]?.level : undefined;
                 return (
+                <Reveal key={game.name} delay={(i % 8) * 60} className="h-full">
                 <CardShell
                   key={game.name}
                   slug={game.category === "instant" ? slugify(game.name) : undefined}
