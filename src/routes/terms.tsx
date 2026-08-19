@@ -39,6 +39,9 @@ const platforms = [
 
 const PROMO = "Gooo33";
 const TELEGRAM = "https://t.me/+SHa12LG9SFQ3YWE0";
+// ضع هنا رابط الفيديو (embed) وسيظهر الفريم 350×200 تلقائياً
+const VIDEO_URL = "";
+
 
 function TermsPage() {
   const navigate = useNavigate();
