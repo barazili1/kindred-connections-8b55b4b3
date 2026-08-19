@@ -143,7 +143,7 @@ function TermsPage() {
         <div className="mx-auto max-w-2xl px-4">
           {/* Hero */}
           <section className="animate-step-in relative flex flex-col items-center pt-9">
-            <div className="luxe-ring relative rounded-full p-1.5">
+            <div className="luxe-ring relative rounded-2xl p-1.5">
               <img
                 src={logo}
                 alt="Smart Odds logo"
