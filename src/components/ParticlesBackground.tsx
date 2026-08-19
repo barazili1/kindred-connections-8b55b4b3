@@ -15,7 +15,8 @@ export function ParticlesBackground() {
     let particles: P[] = [];
     let w = 0;
     let h = 0;
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const resize = () => {
       w = canvas.clientWidth;
@@ -23,7 +24,7 @@ export function ParticlesBackground() {
       canvas.width = w * dpr;
       canvas.height = h * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const count = Math.min(110, Math.max(40, Math.round((w * h) / 14000)));
+      const count = Math.min(55, Math.max(22, Math.round((w * h) / 26000)));
       particles = Array.from({ length: count }, () => ({
         x: Math.random() * w,
         y: Math.random() * h,
@@ -50,8 +51,8 @@ export function ParticlesBackground() {
           const dx = a.x - b.x;
           const dy = a.y - b.y;
           const dist = Math.hypot(dx, dy);
-          if (dist < 120) {
-            ctx.strokeStyle = `oklch(0.62 0.24 300 / ${0.28 * (1 - dist / 120)})`;
+          if (dist < 100) {
+            ctx.strokeStyle = `oklch(0.62 0.24 300 / ${0.24 * (1 - dist / 100)})`;
             ctx.lineWidth = 0.7;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
@@ -65,21 +66,30 @@ export function ParticlesBackground() {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fillStyle = "oklch(0.7 0.26 300 / 0.85)";
-        ctx.shadowColor = "oklch(0.7 0.26 300 / 0.9)";
-        ctx.shadowBlur = 8;
         ctx.fill();
-        ctx.shadowBlur = 0;
       }
 
       raf = window.requestAnimationFrame(draw);
     };
 
+    const onVisibility = () => {
+      window.cancelAnimationFrame(raf);
+      if (!document.hidden && !reduced) raf = window.requestAnimationFrame(draw);
+    };
+
     resize();
-    draw();
+    if (reduced) {
+      draw();
+      window.cancelAnimationFrame(raf);
+    } else {
+      draw();
+    }
     window.addEventListener("resize", resize);
+    document.addEventListener("visibilitychange", onVisibility);
     return () => {
       window.cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
+      document.removeEventListener("visibilitychange", onVisibility);
     };
   }, []);
 
