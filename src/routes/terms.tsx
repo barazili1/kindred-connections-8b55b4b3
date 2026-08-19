@@ -1,5 +1,5 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import logo from "@/assets/casino-ai-logo.png";
 import gooobetLogo from "@/assets/g/gooobet.png.asset.json";
@@ -40,7 +40,8 @@ const platforms = [
 const PROMO = "Gooo33";
 const TELEGRAM = "https://t.me/+SHa12LG9SFQ3YWE0";
 // ضع هنا رابط الفيديو (embed) وسيظهر الفريم 350×200 تلقائياً
-const VIDEO_URL = "";
+const VIDEO_URL =
+  "https://www.image2url.com/r2/default/videos/1787173591197-279815ad-1f2b-4d40-ae23-080397e53271.mp4";
 
 
 function TermsPage() {
@@ -54,6 +55,28 @@ function TermsPage() {
   const [joined, setJoined] = useState(false);
   const [registered, setRegistered] = useState(false);
   const [deposited, setDeposited] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!el) return;
+    el.muted = false;
+    el.volume = 1;
+    const tryPlay = () => {
+      void el.play().catch(() => {
+        const unlock = () => {
+          el.muted = false;
+          void el.play();
+          window.removeEventListener("pointerdown", unlock);
+          window.removeEventListener("touchstart", unlock);
+        };
+        window.addEventListener("pointerdown", unlock, { once: true });
+        window.addEventListener("touchstart", unlock, { once: true });
+      });
+    };
+    tryPlay();
+  }, []);
+
 
   useEffect(() => {
     if (!checking) return;
@@ -147,14 +170,16 @@ function TermsPage() {
 
             {VIDEO_URL ? (
               <div className="luxe-ring relative mt-4 overflow-hidden rounded-2xl border border-gold/25 bg-background/40">
-                <iframe
+                <video
+                  ref={videoRef}
                   src={VIDEO_URL}
-                  title="فيديو الشرح"
                   width={350}
                   height={200}
-                  loading="lazy"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
+                  autoPlay
+                  playsInline
+                  loop
+                  controls
+                  preload="auto"
                   className="block max-w-full border-0"
                 />
               </div>
