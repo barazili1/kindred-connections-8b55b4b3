@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 
 import logo from "@/assets/casino-ai-logo.png";
 import { ParticlesBackground } from "@/components/ParticlesBackground";
+import { Reveal } from "@/components/Reveal";
 import { useUserId } from "@/components/UserIdGate";
 import { games, type Game } from "@/data/games";
 import { slugify } from "@/lib/predict";
