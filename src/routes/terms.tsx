@@ -149,7 +149,7 @@ function TermsPage() {
                 alt="Smart Odds logo"
                 width={1238}
                 height={864}
-                className="animate-float w-64 max-w-full rounded-2xl drop-shadow-[0_0_44px_oklch(0.66_0.26_300/0.65)]"
+                className="animate-float w-44 max-w-full rounded-2xl drop-shadow-[0_0_44px_oklch(0.66_0.26_300/0.65)]"
               />
             </div>
             <div className="mt-4 flex items-center gap-3">

@@ -147,7 +147,7 @@ function Lobby() {
               alt="Smart Odds logo"
               width={1238}
               height={864}
-              className="relative w-64 max-w-full rounded-2xl drop-shadow-[0_0_38px_oklch(0.66_0.26_300/0.65)]"
+              className="relative w-44 max-w-full rounded-2xl drop-shadow-[0_0_38px_oklch(0.66_0.26_300/0.65)]"
             />
             <h1 className="relative mt-3 bg-gradient-to-b from-accent via-foreground to-primary bg-clip-text text-3xl font-extrabold tracking-[0.2em] text-transparent">
               Smart Odds
