@@ -1,7 +1,7 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
-import logo from "@/assets/casino-ai-logo.png";
+import logo from "@/assets/brand-logo.jpg";
 import { ParticlesBackground } from "@/components/ParticlesBackground";
 
 export const Route = createFileRoute("/")({
@@ -49,9 +49,9 @@ function Splash() {
         <img
           src={logo}
           alt="Smart Odds logo"
-          width={816}
-          height={816}
-          className="w-40 animate-pulse-glow drop-shadow-[0_0_45px_oklch(0.66_0.26_300/0.6)]"
+          width={1238}
+          height={864}
+          className="w-72 max-w-full rounded-2xl drop-shadow-[0_0_45px_oklch(0.66_0.26_300/0.6)]"
         />
 
         <h1 className="mt-6 bg-gradient-to-b from-accent to-primary bg-clip-text text-4xl font-extrabold tracking-[0.15em] text-transparent">
