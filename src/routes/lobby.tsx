@@ -316,6 +316,7 @@ function Lobby() {
                     </span>
                   </span>
                 </CardShell>
+                </Reveal>
                 );
               })}
             </div>
