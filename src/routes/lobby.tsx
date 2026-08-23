@@ -116,8 +116,8 @@ function Lobby() {
   return (
     <main className="relative z-10 min-h-screen pb-20">
       {/* Ambient background */}
-      <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(110%_60%_at_50%_-10%,oklch(0.66_0.26_258/0.22),transparent_65%)]" />
-      <div className="pointer-events-none fixed inset-x-0 bottom-0 -z-10 h-56 bg-[radial-gradient(60%_100%_at_50%_100%,oklch(0.78_0.19_232/0.12),transparent_70%)]" />
+      <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(110%_60%_at_50%_-10%,oklch(0.541_0.145_15/0.22),transparent_65%)]" />
+      <div className="pointer-events-none fixed inset-x-0 bottom-0 -z-10 h-56 bg-[radial-gradient(60%_100%_at_50%_100%,oklch(0.64_0.145_10/0.12),transparent_70%)]" />
 
       {/* Top bar */}
       <header className="sticky top-0 z-30 border-b border-primary/15 bg-background/80 backdrop-blur-xl">

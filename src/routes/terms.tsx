@@ -149,7 +149,7 @@ function TermsPage() {
                 alt="Smart Odds logo"
                 width={1238}
                 height={864}
-                className="animate-float w-44 max-w-full rounded-2xl drop-shadow-[0_0_44px_oklch(0.66_0.26_258/0.65)]"
+                className="animate-float w-44 max-w-full rounded-2xl drop-shadow-[0_0_44px_oklch(0.541_0.145_15/0.65)]"
               />
             </div>
             <div className="mt-4 flex items-center gap-3">
@@ -203,14 +203,14 @@ function TermsPage() {
                       }}
                       className={`group flex h-[86px] w-full flex-col items-center justify-center gap-1.5 rounded-2xl border transition-all duration-300 hover:-translate-y-1 ${
                         active
-                          ? "luxe-ring border-gold bg-[linear-gradient(180deg,oklch(0.66_0.26_258/0.28),oklch(0.5_0.22_295/0.12))] shadow-[0_0_34px_-6px_oklch(0.66_0.26_258/0.75)]"
+                          ? "luxe-ring border-gold bg-[linear-gradient(180deg,oklch(0.541_0.145_15/0.28),oklch(0.41_0.145_15/0.12))] shadow-[0_0_34px_-6px_oklch(0.541_0.145_15/0.75)]"
                           : "border-gold/15 bg-background/30 hover:border-gold/50"
                       }`}
                     >
                       <span
                         className={`relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-full border transition-all duration-300 ${
                           active
-                            ? "animate-reveal border-gold shadow-[0_0_20px_oklch(0.66_0.26_258/0.75)]"
+                            ? "animate-reveal border-gold shadow-[0_0_20px_oklch(0.541_0.145_15/0.75)]"
                             : "border-gold/25 bg-background/60 grayscale-[0.35] group-hover:grayscale-0"
                         }`}
                       >
@@ -293,7 +293,7 @@ function TermsPage() {
                 {["300 جنيه", "6 دولار"].map((amount) => (
                   <span
                     key={amount}
-                    className="luxe-corners relative rounded-2xl border border-gold/20 bg-[linear-gradient(180deg,oklch(0.22_0.05_258/0.6),oklch(0.11_0.03_258/0.85))] px-4 py-4 text-center text-base font-extrabold text-gold-soft"
+                    className="luxe-corners relative rounded-2xl border border-gold/20 bg-[linear-gradient(180deg,oklch(0.22_0.0425_15/0.6),oklch(0.11_0.0255_15/0.85))] px-4 py-4 text-center text-base font-extrabold text-gold-soft"
                   >
                     {amount}
                   </span>
@@ -322,7 +322,7 @@ function TermsPage() {
                 inputMode="numeric"
                 placeholder="ID"
                 dir="ltr"
-                className="w-full rounded-2xl border border-gold/25 bg-background/50 px-4 py-3.5 text-center text-lg font-bold tracking-[0.3em] text-foreground outline-none transition-all placeholder:tracking-normal placeholder:text-muted-foreground/60 focus:border-gold focus:shadow-[0_0_26px_-8px_oklch(0.66_0.26_258/0.9)]"
+                className="w-full rounded-2xl border border-gold/25 bg-background/50 px-4 py-3.5 text-center text-lg font-bold tracking-[0.3em] text-foreground outline-none transition-all placeholder:tracking-normal placeholder:text-muted-foreground/60 focus:border-gold focus:shadow-[0_0_26px_-8px_oklch(0.541_0.145_15/0.9)]"
               />
               {error ? (
                 <p className="animate-reveal mt-2 text-center text-[11px] font-semibold text-destructive">
@@ -384,7 +384,7 @@ function Step({
       <span
         className={`absolute -start-7 top-4 flex h-7 w-7 items-center justify-center rounded-full border text-[11px] font-extrabold transition-all duration-500 ${
           complete
-            ? "animate-reveal border-gold bg-gold/25 text-gold-soft shadow-[0_0_18px_oklch(0.66_0.26_258/0.8)]"
+            ? "animate-reveal border-gold bg-gold/25 text-gold-soft shadow-[0_0_18px_oklch(0.541_0.145_15/0.8)]"
             : "border-gold/35 bg-background text-gold-soft/70"
         }`}
       >
@@ -392,7 +392,7 @@ function Step({
       </span>
       <div
         className={`luxe-panel luxe-hairline luxe-corners overflow-hidden rounded-3xl p-4 pt-5 transition-all duration-500 ${
-          complete ? "border-gold/55 shadow-[0_0_44px_-18px_oklch(0.66_0.26_258/0.9)]" : ""
+          complete ? "border-gold/55 shadow-[0_0_44px_-18px_oklch(0.541_0.145_15/0.9)]" : ""
         }`}
       >
         <h2 className="mb-3 text-[13px] font-extrabold tracking-wide text-foreground">{title}</h2>
