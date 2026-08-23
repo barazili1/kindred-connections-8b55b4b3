@@ -122,6 +122,15 @@ const kindByName: Record<string, PredictionKind> = {
   "Vampire Curse": "none",
   "777": "none",
   "Burning Hot": "none",
+  "Scratch Card": "none",
+  "Fruit Cocktail": "none",
+  "Royal Crystals": "none",
+  "Diamond Slots": "none",
+  "Royal Feast": "none",
+  "Book of Ra": "none",
+  "Swirly Spin": "none",
+  "Wild Fruits": "none",
+  Yahtzee: "none",
 };
 
 export function getKind(name: string): PredictionKind {
