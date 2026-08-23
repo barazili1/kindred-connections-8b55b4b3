@@ -92,7 +92,7 @@ function Lobby() {
               alt="Smart Odds logo"
               width={1238}
               height={864}
-              className="relative w-44 max-w-full rounded-2xl drop-shadow-[0_0_38px_oklch(0.66_0.26_300/0.65)]"
+              className="relative w-44 max-w-full rounded-2xl drop-shadow-[0_0_38px_oklch(0.66_0.26_258/0.65)]"
             />
             <h1 className="relative mt-3 bg-gradient-to-b from-accent via-foreground to-primary bg-clip-text text-3xl font-extrabold tracking-[0.2em] text-transparent">
               Smart Odds
@@ -102,7 +102,7 @@ function Lobby() {
             </p>
 
             {/* Search */}
-            <label className="relative mt-5 flex w-full max-w-md items-center gap-2 rounded-full border border-border px-4 py-2.5 backdrop-blur-md focus-within:border-primary focus-within:shadow-[0_0_24px_oklch(0.66_0.26_300/0.35)]">
+            <label className="relative mt-5 flex w-full max-w-md items-center gap-2 rounded-full border border-border px-4 py-2.5 backdrop-blur-md focus-within:border-primary focus-within:shadow-[0_0_24px_oklch(0.66_0.26_258/0.35)]">
               <svg
                 aria-hidden="true"
                 viewBox="0 0 24 24"
@@ -142,7 +142,7 @@ function Lobby() {
                 <CardShell
                   key={game.name}
                   slug={slugify(game.name)}
-                  className="group relative overflow-hidden rounded-2xl border border-accent/30 text-left backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-[0_0_26px_oklch(0.8_0.18_180/0.4)]"
+                  className="group relative overflow-hidden rounded-2xl border border-accent/30 text-left backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-[0_0_26px_oklch(0.8_0.18_225/0.4)]"
                 >
                   <div className="relative overflow-hidden">
                     <img
@@ -154,7 +154,7 @@ function Lobby() {
                       className="aspect-[301/180] w-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                     <span className="absolute inset-0 flex items-center justify-center bg-background/60 opacity-0 backdrop-blur-[2px] transition-opacity duration-300 group-hover:opacity-100">
-                      <span className="rounded-full bg-gradient-to-r from-primary to-accent px-4 py-1.5 text-[11px] font-bold uppercase tracking-widest text-primary-foreground shadow-[0_0_22px_oklch(0.66_0.26_300/0.6)]">
+                      <span className="rounded-full bg-gradient-to-r from-primary to-accent px-4 py-1.5 text-[11px] font-bold uppercase tracking-widest text-primary-foreground shadow-[0_0_22px_oklch(0.66_0.26_258/0.6)]">
                         Play
                       </span>
                     </span>

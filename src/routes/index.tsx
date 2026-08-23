@@ -51,7 +51,7 @@ function Splash() {
           alt="Smart Odds logo"
           width={1238}
           height={864}
-          className="w-52 max-w-full rounded-2xl drop-shadow-[0_0_45px_oklch(0.66_0.26_300/0.6)]"
+          className="w-52 max-w-full rounded-2xl drop-shadow-[0_0_45px_oklch(0.66_0.26_258/0.6)]"
         />
 
         <h1 className="mt-6 bg-gradient-to-b from-accent to-primary bg-clip-text text-4xl font-extrabold tracking-[0.15em] text-transparent">
@@ -61,7 +61,7 @@ function Splash() {
         <div className="mt-10 w-full max-w-xs">
           <div className="h-2 w-full overflow-hidden rounded-full border border-border bg-transparent">
             <div
-              className="h-full rounded-full bg-gradient-to-r from-primary via-accent to-primary shadow-[0_0_18px_oklch(0.66_0.26_300/0.75)] transition-[width] duration-100 ease-linear"
+              className="h-full rounded-full bg-gradient-to-r from-primary via-accent to-primary shadow-[0_0_18px_oklch(0.66_0.26_258/0.75)] transition-[width] duration-100 ease-linear"
               style={{ width: `${progress}%` }}
             />
           </div>
