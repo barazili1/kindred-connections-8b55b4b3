@@ -44,23 +44,6 @@ export function ParticlesBackground() {
         if (p.y < 0 || p.y > h) p.vy *= -1;
       }
 
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const a = particles[i]!;
-          const b = particles[j]!;
-          const dx = a.x - b.x;
-          const dy = a.y - b.y;
-          const dist = Math.hypot(dx, dy);
-          if (false) {
-            ctx.strokeStyle = `oklch(0.62   0.24 / ${0.24 * (1 - dist / 100)})`;
-            ctx.lineWidth = 0.7;
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(b.x, b.y);
-            ctx.stroke();
-          }
-        }
-      }
 
       for (const p of particles) {
         ctx.beginPath();
