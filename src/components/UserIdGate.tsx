@@ -47,7 +47,7 @@ export function UserIdGate({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 p-5 backdrop-blur-md">
-      <div className="animate-rise w-full max-w-sm rounded-3xl border border-primary/35 bg-[linear-gradient(160deg,oklch(0.16_0.05_300/0.95),oklch(0.09_0.03_300/0.97))] p-6 text-center shadow-[0_30px_80px_-30px_oklch(0_0_0/0.9)]">
+      <div className="animate-rise w-full max-w-sm rounded-3xl border border-primary/35 bg-[linear-gradient(160deg,oklch(0.16_0.05_258/0.95),oklch(0.09_0.03_258/0.97))] p-6 text-center shadow-[0_30px_80px_-30px_oklch(0_0_0/0.9)]">
         {connecting ? (
           <div dir="rtl" className="flex flex-col items-center gap-4 py-6">
             <span className="h-10 w-10 animate-spin rounded-full border-2 border-primary/30 border-t-primary" />

@@ -22,15 +22,6 @@ export type Game = {
 };
 
 export const games: Game[] = [
-  { name: "Scratch Card", image: "/img/i/scratch-card.jpg", category: "instant" },
-  { name: "Fruit Cocktail", image: "/img/i/fruit-cocktail.jpg", category: "instant" },
-  { name: "Royal Crystals", image: "/img/i/royal-crystals.jpg", category: "instant" },
-  { name: "Diamond Slots", image: "/img/i/diamond-slots.jpg", category: "instant" },
-  { name: "Royal Feast", image: "/img/i/royal-feast.jpg", category: "instant" },
-  { name: "Book of Ra", image: "/img/i/book-of-ra.jpg", category: "instant" },
-  { name: "Swirly Spin", image: "/img/i/swirly-spin.jpg", category: "instant" },
-  { name: "Wild Fruits", image: "/img/i/wild-fruits.jpg", category: "instant" },
-  { name: "Yahtzee", image: "/img/i/yahtzee.jpg", category: "instant" },
   { name: "Apple of Fortune", image: i_appleOfFortune.url, category: "instant" },
   { name: "Air Crash", image: i_airCrash.url, category: "instant" },
   { name: "777", image: i_777.url, category: "instant" },
@@ -45,4 +36,13 @@ export const games: Game[] = [
   { name: "Vampire Curse", image: i_vampireCurse.url, category: "instant" },
   { name: "Crystal", image: i_crystal.url, category: "instant" },
   { name: "Burning Hot", image: i_burningHot.url, category: "instant" },
+  { name: "Scratch Card", image: "/img/i/scratch-card.jpg", category: "instant" },
+  { name: "Fruit Cocktail", image: "/img/i/fruit-cocktail.jpg", category: "instant" },
+  { name: "Royal Crystals", image: "/img/i/royal-crystals.jpg", category: "instant" },
+  { name: "Diamond Slots", image: "/img/i/diamond-slots.jpg", category: "instant" },
+  { name: "Royal Feast", image: "/img/i/royal-feast.jpg", category: "instant" },
+  { name: "Book of Ra", image: "/img/i/book-of-ra.jpg", category: "instant" },
+  { name: "Swirly Spin", image: "/img/i/swirly-spin.jpg", category: "instant" },
+  { name: "Wild Fruits", image: "/img/i/wild-fruits.jpg", category: "instant" },
+  { name: "Yahtzee", image: "/img/i/yahtzee.jpg", category: "instant" },
 ];

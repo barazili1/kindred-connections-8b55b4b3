@@ -52,7 +52,7 @@ export function ParticlesBackground() {
           const dy = a.y - b.y;
           const dist = Math.hypot(dx, dy);
           if (dist < 100) {
-            ctx.strokeStyle = `oklch(0.62 0.24 300 / ${0.24 * (1 - dist / 100)})`;
+            ctx.strokeStyle = `oklch(0.62 0.24 258 / ${0.24 * (1 - dist / 100)})`;
             ctx.lineWidth = 0.7;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
@@ -65,7 +65,7 @@ export function ParticlesBackground() {
       for (const p of particles) {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = "oklch(0.7 0.26 300 / 0.85)";
+        ctx.fillStyle = "oklch(0.7 0.26 258 / 0.85)";
         ctx.fill();
       }
 
