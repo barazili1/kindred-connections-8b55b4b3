@@ -134,16 +134,8 @@ function Lobby() {
         <Reveal>
           <section className="relative mt-5 overflow-hidden rounded-3xl border border-primary/25 bg-transparent p-5 text-right backdrop-blur-[2px]" dir="rtl">
             <div className="pointer-events-none absolute -left-14 -top-14 h-44 w-44 rounded-full bg-primary/20 blur-[80px]" />
-            <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-              smart odds lobby
-            </p>
-            <h1 className="mt-2 text-2xl font-black leading-tight text-foreground">
-              اختار لعبتك وابدأ <span className="text-accent">مكسبك</span>
-            </h1>
-            <p className="mt-2 max-w-md text-[12px] leading-relaxed text-muted-foreground">
-              كل الألعاب متاحة بنسب حظ لحظية، اختار اللعبة اللي تناسبك وابدأ فورًا.
-            </p>
-            <div className="mt-4 grid grid-cols-3 gap-2" dir="ltr">
+            <div className="grid grid-cols-3 gap-2" dir="ltr">
+
               <Stat label="Games" value={String(instantGames.length)} />
               <Stat label="Hot now" value={String(hotGames.length)} tone="text-accent" />
               <Stat label="Avg luck" value={`${avgLuck}%`} />
