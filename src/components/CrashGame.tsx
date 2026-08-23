@@ -208,15 +208,13 @@ export function CrashGame({ name, image }: { name: string; image: string }) {
               />
             </svg>
             <span
-              className="absolute text-lg transition-transform duration-100"
+              className="absolute h-3 w-3 rounded-full bg-accent shadow-[0_0_12px_oklch(0.78_0.19_232/0.9)] ring-2 ring-background"
               style={{
                 left: `${(curve.px / curve.w) * 100}%`,
                 top: `${(curve.py / curve.h) * 100}%`,
-                transform: "translate(-50%, -60%)",
+                transform: "translate(-50%, -50%)",
               }}
-            >
-              ✈️
-            </span>
+            />
           </div>
 
           {/* HUD stats */}
