@@ -20,7 +20,7 @@ export const Route = createFileRoute("/lobby")({
       { property: "og:title", content: "Lobby — Smart Odds" },
       {
         property: "og:description",
-        content: "Instant games with live luck rates updated every few minutes.",
+        content: "Instant games with live luck rates.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -35,7 +35,7 @@ const levelStyles: Record<LuckLevel, { dot: string; text: string; ring: string; 
   hot: {
     dot: "bg-accent",
     text: "text-accent",
-    ring: "border-accent/50",
+    ring: "border-accent/45",
     bar: "from-accent to-primary",
   },
   stable: {
@@ -59,16 +59,11 @@ const filters: { id: LuckLevel | "all"; label: string }[] = [
   { id: "unstable", label: "غير مستقرة" },
 ];
 
-function fmtLeft(ms: number) {
-  const s = Math.max(0, Math.ceil(ms / 1000));
-  return `${String(Math.floor(s / 60)).padStart(2, "0")}:${String(s % 60).padStart(2, "0")}`;
-}
-
 function Lobby() {
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<LuckLevel | "all">("all");
   const [usersOnline, setUsersOnline] = useState(2417);
-  const [now, setNow] = useState(() => Date.now());
+  const [slotIndex, setSlotIndex] = useState(() => getLuckSlot(Date.now()).index);
   const { userId, ready } = useUserId();
   const navigate = useNavigate();
 
@@ -78,16 +73,15 @@ function Lobby() {
 
   useEffect(() => {
     const id = window.setInterval(() => {
-      setNow(Date.now());
+      setSlotIndex(getLuckSlot(Date.now()).index);
       setUsersOnline((n) =>
         Math.min(3200, Math.max(1800, n + Math.round((Math.random() - 0.5) * 24))),
       );
-    }, 1000);
+    }, 3000);
     return () => window.clearInterval(id);
   }, []);
 
-  const slot = useMemo(() => getLuckSlot(now), [now]);
-  const luckMap = useMemo(() => getLuckMap(slot.index), [slot.index]);
+  const luckMap = useMemo(() => getLuckMap(slotIndex), [slotIndex]);
 
   const hotGames = useMemo(
     () => instantGames.filter((g) => luckMap[g.name]?.level === "hot").slice(0, 10),
@@ -108,19 +102,10 @@ function Lobby() {
     });
   }, [query, filter, luckMap]);
 
-  const progress = Math.min(
-    100,
-    Math.max(0, ((now - slot.start) / Math.max(1, slot.endsAt - slot.start)) * 100),
-  );
-
   return (
     <main className="relative z-10 min-h-screen pb-20">
-      {/* Ambient background */}
-      <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(110%_60%_at_50%_-10%,oklch(0.66_0.26_258/0.22),transparent_65%)]" />
-      <div className="pointer-events-none fixed inset-x-0 bottom-0 -z-10 h-56 bg-[radial-gradient(60%_100%_at_50%_100%,oklch(0.78_0.19_232/0.12),transparent_70%)]" />
-
       {/* Top bar */}
-      <header className="sticky top-0 z-30 border-b border-primary/15 bg-background/80 backdrop-blur-xl">
+      <header className="sticky top-0 z-30 border-b border-primary/20 bg-transparent backdrop-blur-xl">
         <div className="mx-auto flex max-w-6xl items-center gap-2 px-3 py-2">
           <img
             src={logo}
@@ -132,12 +117,12 @@ function Lobby() {
           <span className="gold-shimmer-text shrink-0 text-[11px] font-extrabold tracking-[0.16em]">
             Smart Odds
           </span>
-          <span className="ms-auto flex shrink-0 items-center gap-1 rounded-full border border-primary/25 px-2 py-0.5 text-[9px] text-muted-foreground">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+          <span className="ms-auto flex shrink-0 items-center gap-1 rounded-full border border-primary/30 px-2 py-0.5 text-[9px] text-muted-foreground">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
             {usersOnline.toLocaleString("en-US")}
           </span>
           {userId ? (
-            <span className="max-w-[32%] truncate rounded-full border border-primary/30 bg-primary/10 px-2 py-0.5 text-[9px] font-bold text-foreground">
+            <span className="max-w-[32%] truncate rounded-full border border-primary/35 bg-transparent px-2 py-0.5 text-[9px] font-bold text-foreground">
               {userId}
             </span>
           ) : null}
@@ -145,38 +130,20 @@ function Lobby() {
       </header>
 
       <div className="mx-auto max-w-6xl px-4">
-        {/* Luck console */}
+        {/* Hero */}
         <Reveal>
-          <section className="relative mt-4 overflow-hidden rounded-3xl border border-primary/25 bg-card/70 p-4 backdrop-blur-xl">
-            <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-primary/20 blur-3xl" />
-            <div className="relative flex items-start justify-between gap-3" dir="rtl">
-              <div className="text-right">
-                <p className="text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
-                  محرك نسب الحظ
-                </p>
-                <h1 className="mt-1 text-lg font-black text-foreground">
-                  الجولة #{slot.index} شغالة دلوقتي
-                </h1>
-                <p className="mt-1 text-[11px] text-muted-foreground">
-                  النسب بتتحدث تلقائيًا لكل الألعاب
-                </p>
-              </div>
-              <div className="shrink-0 rounded-2xl border border-accent/40 bg-background/60 px-3 py-2 text-center">
-                <p className="font-mono text-xl font-black tabular-nums text-accent">
-                  {fmtLeft(slot.endsAt - now)}
-                </p>
-                <p className="text-[8px] uppercase tracking-[0.2em] text-muted-foreground">
-                  next update
-                </p>
-              </div>
-            </div>
-            <div className="relative mt-3 h-1.5 overflow-hidden rounded-full bg-muted/50">
-              <div
-                className="h-full rounded-full bg-gradient-to-r from-primary to-accent transition-[width] duration-1000"
-                style={{ width: `${progress}%` }}
-              />
-            </div>
-            <div className="relative mt-3 grid grid-cols-3 gap-2">
+          <section className="relative mt-5 overflow-hidden rounded-3xl border border-primary/25 bg-transparent p-5 text-right backdrop-blur-[2px]" dir="rtl">
+            <div className="pointer-events-none absolute -left-14 -top-14 h-44 w-44 rounded-full bg-primary/20 blur-[80px]" />
+            <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+              smart odds lobby
+            </p>
+            <h1 className="mt-2 text-2xl font-black leading-tight text-foreground">
+              اختار لعبتك وابدأ <span className="text-accent">مكسبك</span>
+            </h1>
+            <p className="mt-2 max-w-md text-[12px] leading-relaxed text-muted-foreground">
+              كل الألعاب متاحة بنسب حظ لحظية، اختار اللعبة اللي تناسبك وابدأ فورًا.
+            </p>
+            <div className="mt-4 grid grid-cols-3 gap-2" dir="ltr">
               <Stat label="Games" value={String(instantGames.length)} />
               <Stat label="Hot now" value={String(hotGames.length)} tone="text-accent" />
               <Stat label="Avg luck" value={`${avgLuck}%`} />
@@ -204,7 +171,7 @@ function Lobby() {
                       key={g.name}
                       to="/game/$slug"
                       params={{ slug: slugify(g.name) }}
-                      className="group relative w-40 shrink-0 overflow-hidden rounded-2xl border border-accent/40 bg-card transition-transform duration-300 hover:-translate-y-1"
+                      className="group relative w-40 shrink-0 overflow-hidden rounded-2xl border border-accent/40 bg-transparent transition-transform duration-300 hover:-translate-y-1"
                     >
                       <img
                         src={g.image}
@@ -214,7 +181,7 @@ function Lobby() {
                         height={180}
                         className="aspect-[301/180] w-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
-                      <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background to-transparent px-2 pb-1.5 pt-6">
+                      <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background/90 to-transparent px-2 pb-1.5 pt-6">
                         <span className="block truncate text-[11px] font-semibold text-foreground">
                           {g.name}
                         </span>
@@ -230,9 +197,9 @@ function Lobby() {
           </Reveal>
         )}
 
-        {/* Sticky search + filters */}
-        <section className="sticky top-[45px] z-20 -mx-4 mt-6 bg-background/85 px-4 py-3 backdrop-blur-xl">
-          <label className="flex items-center gap-2 rounded-2xl border border-primary/25 bg-card px-3 py-2 transition-shadow focus-within:border-accent">
+        {/* Search + filters */}
+        <section className="sticky top-[45px] z-20 -mx-4 mt-6 bg-transparent px-4 py-3 backdrop-blur-xl">
+          <label className="flex items-center gap-2 rounded-2xl border border-primary/30 bg-transparent px-3 py-2 transition-colors focus-within:border-accent">
             <svg
               aria-hidden="true"
               viewBox="0 0 24 24"
@@ -259,8 +226,8 @@ function Lobby() {
                 onClick={() => setFilter(f.id)}
                 className={`shrink-0 rounded-full border px-3.5 py-1.5 text-[11px] font-bold transition-all active:scale-95 ${
                   filter === f.id
-                    ? "border-accent bg-accent/15 text-accent"
-                    : "border-primary/20 text-muted-foreground hover:border-primary hover:text-foreground"
+                    ? "border-accent text-accent shadow-[0_0_18px_-6px_oklch(0.62_0.19_18/0.9)]"
+                    : "border-primary/25 text-muted-foreground hover:border-primary hover:text-foreground"
                 }`}
               >
                 {f.label}
@@ -282,7 +249,7 @@ function Lobby() {
                 <Link
                   to="/game/$slug"
                   params={{ slug: slugify(game.name) }}
-                  className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border bg-card text-left transition-all duration-300 hover:-translate-y-1 ${s.ring}`}
+                  className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border bg-transparent text-left backdrop-blur-[2px] transition-all duration-300 hover:-translate-y-1 ${s.ring}`}
                 >
                   <div className="relative overflow-hidden">
                     <img
@@ -294,7 +261,7 @@ function Lobby() {
                       className="aspect-[301/180] w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <span
-                      className={`absolute right-1.5 top-1.5 rounded-full border border-background/40 bg-background/75 px-2 py-0.5 text-[9px] font-black backdrop-blur-md ${s.text}`}
+                      className={`absolute right-1.5 top-1.5 rounded-full border border-primary/30 bg-background/50 px-2 py-0.5 text-[9px] font-black backdrop-blur-md ${s.text}`}
                     >
                       {info.luck}%
                     </span>
@@ -309,7 +276,7 @@ function Lobby() {
                         {luckShortLabels[info.level]}
                       </span>
                     </span>
-                    <span className="mt-1.5 block h-1 overflow-hidden rounded-full bg-muted/60">
+                    <span className="mt-1.5 block h-1 overflow-hidden rounded-full bg-muted">
                       <span
                         className={`block h-full rounded-full bg-gradient-to-r ${s.bar} transition-[width] duration-700`}
                         style={{ width: `${info.luck}%` }}
@@ -334,7 +301,7 @@ function Lobby() {
 
 function Stat({ label, value, tone }: { label: string; value: string; tone?: string }) {
   return (
-    <div className="rounded-xl border border-primary/20 bg-background/50 px-2 py-1.5 text-center">
+    <div className="rounded-xl border border-primary/25 bg-transparent px-2 py-1.5 text-center">
       <p className="text-[8px] uppercase tracking-[0.2em] text-muted-foreground">{label}</p>
       <p className={`mt-0.5 font-mono text-sm font-black ${tone ?? "text-foreground"}`}>{value}</p>
     </div>
