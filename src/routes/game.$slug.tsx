@@ -7,7 +7,6 @@ import minesGemAsset from "@/assets/g/mines-gem.png.asset.json";
 import ballAsset from "@/assets/t/ball.png.asset.json";
 import cupAsset from "@/assets/t/cup.png.asset.json";
 import { CrashGame } from "@/components/CrashGame";
-import { ParticlesBackground } from "@/components/ParticlesBackground";
 import { useUserId } from "@/components/UserIdGate";
 import {
   APPLE_FEED_USER_ID,
@@ -172,7 +171,6 @@ function GamePredictor() {
 
   return (
     <>
-      <ParticlesBackground />
       <main className="relative z-10 min-h-screen pb-24">
         <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(120%_70%_at_50%_-10%,oklch(0.541_0.145_15/0.24),transparent_65%)]" />
         <div className="pointer-events-none fixed inset-x-0 bottom-0 -z-10 h-64 bg-[radial-gradient(70%_100%_at_50%_100%,oklch(0.64_0.145_10/0.14),transparent_70%)]" />

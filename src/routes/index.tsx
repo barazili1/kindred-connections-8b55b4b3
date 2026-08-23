@@ -2,7 +2,6 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
 import logo from "@/assets/brand-logo.jpg";
-import { ParticlesBackground } from "@/components/ParticlesBackground";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -44,7 +43,6 @@ function Splash() {
 
   return (
     <>
-      <ParticlesBackground />
       <main className="relative z-10 flex min-h-screen flex-col items-center justify-center px-8">
         <img
           src={logo}
