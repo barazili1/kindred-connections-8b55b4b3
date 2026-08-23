@@ -1,6 +1,7 @@
 import { Link, createFileRoute, notFound } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 
+import brandLogo from "@/assets/brand-logo.jpg";
 import appleCellAsset from "@/assets/g/apple-cell.png.asset.json";
 import appleGoodAsset from "@/assets/g/apple-good.png.asset.json";
 import minesGemAsset from "@/assets/g/mines-gem.png.asset.json";
@@ -194,9 +195,13 @@ function GamePredictor() {
               </svg>
               Lobby
             </Link>
-            <span className="gold-shimmer-text text-xs font-extrabold tracking-[0.28em]">
-              Smart Odds
-            </span>
+            <img
+              src={brandLogo}
+              alt="Smart Odds logo"
+              width={1253}
+              height={844}
+              className="h-8 w-12 rounded-lg border border-accent/25 object-cover"
+            />
             <span className="flex items-center gap-1 rounded-full border border-accent/40 px-2.5 py-1 text-[9px] font-bold tracking-widest text-accent">
               <span className="relative flex h-1.5 w-1.5">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent/70" />
