@@ -6,7 +6,7 @@ import { buildPrediction } from "@/lib/predict";
 type Phase = "idle" | "running" | "done";
 
 function randomHistory() {
-  return Array.from({ length: 8 }, () => Number((1 + Math.random() * 6).toFixed(2)));
+  return Array.from({ length: 8 }, () => Number((1 + Math.random() * 4).toFixed(2)));
 }
 
 /** Flight-deck styled crash predictor: animated odds dial, climbing curve and plane. */
@@ -27,7 +27,7 @@ export function CrashGame({ name, image }: { name: string; image: string }) {
   const start = () => {
     if (phase === "running") return;
     const p = buildPrediction("crash");
-    const t = p.kind === "crash" ? Number.parseFloat(p.multiplier) : 2;
+    const t = Number((1 + Math.random() * 4).toFixed(2));
     setTarget(t);
     setRound(p.kind === "crash" ? p.round : null);
     setPhase("running");
@@ -73,8 +73,8 @@ export function CrashGame({ name, image }: { name: string; image: string }) {
 
   return (
     <main className="relative z-10 min-h-screen overflow-hidden pb-20">
-      <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(120%_80%_at_50%_-10%,oklch(0.541_0.145_15/0.26),transparent_65%)]" />
-      <div className="pointer-events-none fixed inset-x-0 bottom-0 -z-10 h-72 bg-[radial-gradient(70%_100%_at_50%_100%,oklch(0.64_0.145_10/0.16),transparent_70%)]" />
+      <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(120%_80%_at_50%_-10%,oklch(0.541_0.145_158/0.26),transparent_65%)]" />
+      <div className="pointer-events-none fixed inset-x-0 bottom-0 -z-10 h-72 bg-[radial-gradient(70%_100%_at_50%_100%,oklch(0.64_0.145_158/0.16),transparent_70%)]" />
 
       {/* Top bar */}
       <header className="sticky top-0 z-30 border-b border-primary/25 bg-background/25 backdrop-blur-xl">
@@ -144,7 +144,7 @@ export function CrashGame({ name, image }: { name: string; image: string }) {
 
         {/* Flight deck */}
         <section className="luxe-panel luxe-hairline animate-rise relative mt-4 overflow-hidden p-5">
-          <div className="pointer-events-none absolute inset-0 opacity-[0.18] [background-image:linear-gradient(oklch(0.64_0.145_10/0.5)_1px,transparent_1px),linear-gradient(90deg,oklch(0.64_0.145_10/0.5)_1px,transparent_1px)] [background-size:26px_26px]" />
+          <div className="pointer-events-none absolute inset-0 opacity-[0.18] [background-image:linear-gradient(oklch(0.64_0.145_158/0.5)_1px,transparent_1px),linear-gradient(90deg,oklch(0.64_0.145_158/0.5)_1px,transparent_1px)] [background-size:26px_26px]" />
 
           {/* Odds dial */}
           <div className="relative mx-auto flex h-52 w-52 items-center justify-center">
@@ -170,7 +170,7 @@ export function CrashGame({ name, image }: { name: string; image: string }) {
                 strokeLinecap="round"
                 strokeDasharray={circumference}
                 strokeDashoffset={circumference * (1 - progress)}
-                className="text-accent drop-shadow-[0_0_14px_oklch(0.64_0.145_10/0.9)]"
+                className="text-accent drop-shadow-[0_0_14px_oklch(0.64_0.145_158/0.9)]"
               />
             </svg>
             <div className="relative flex flex-col items-center">
@@ -204,11 +204,11 @@ export function CrashGame({ name, image }: { name: string; image: string }) {
                 fill="none"
                 strokeWidth="3"
                 strokeLinecap="round"
-                className="stroke-accent drop-shadow-[0_0_10px_oklch(0.64_0.145_10/0.9)]"
+                className="stroke-accent drop-shadow-[0_0_10px_oklch(0.64_0.145_158/0.9)]"
               />
             </svg>
             <span
-              className="absolute h-3 w-3 rounded-full bg-accent shadow-[0_0_12px_oklch(0.64_0.145_10/0.9)] ring-2 ring-background"
+              className="absolute h-3 w-3 rounded-full bg-accent shadow-[0_0_12px_oklch(0.64_0.145_158/0.9)] ring-2 ring-background"
               style={{
                 left: `${(curve.px / curve.w) * 100}%`,
                 top: `${(curve.py / curve.h) * 100}%`,
