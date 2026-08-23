@@ -65,7 +65,7 @@ export function ParticlesBackground() {
       for (const p of particles) {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = "oklch(0.7 0.26 258 / 0.85)";
+        ctx.fillStyle = "oklch(0.574 0.145 15 / 0.85)";
         ctx.fill();
       }
 
