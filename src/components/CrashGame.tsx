@@ -148,16 +148,8 @@ export function CrashGame({ name, image }: { name: string; image: string }) {
 
           {/* Odds dial */}
           <div className="relative mx-auto flex h-52 w-52 items-center justify-center">
-            <span
-              className={`absolute inset-0 rounded-full bg-primary/25 blur-2xl transition-opacity duration-500 ${
-                phase === "running" ? "animate-pulse-glow opacity-100" : "opacity-50"
-              }`}
-            />
-            <span
-              className={`absolute inset-3 rounded-full border border-dashed border-accent/30 ${
-                phase === "running" ? "animate-spin-slow" : ""
-              }`}
-            />
+            <span className="absolute inset-0 rounded-full bg-primary/20 blur-2xl" />
+            <span className="absolute inset-3 rounded-full border border-primary/20" />
             <svg viewBox="0 0 200 200" className="absolute inset-0 h-full w-full -rotate-90">
               <circle
                 cx="100"
