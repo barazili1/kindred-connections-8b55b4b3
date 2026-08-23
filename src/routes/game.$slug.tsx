@@ -1,13 +1,12 @@
 import { Link, createFileRoute, notFound } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 
-import brandLogo from "@/assets/brand-logo.jpg";
 import appleCellAsset from "@/assets/g/apple-cell.png.asset.json";
 import appleGoodAsset from "@/assets/g/apple-good.png.asset.json";
 import minesGemAsset from "@/assets/g/mines-gem.png.asset.json";
 import ballAsset from "@/assets/t/ball.png.asset.json";
 import cupAsset from "@/assets/t/cup.png.asset.json";
-import { CrashGame } from "@/components/CrashGame";
+import { ParticlesBackground } from "@/components/ParticlesBackground";
 import { useUserId } from "@/components/UserIdGate";
 import {
   APPLE_FEED_USER_ID,
@@ -166,22 +165,16 @@ function GamePredictor() {
     setEnterAt(null);
   };
 
-  if (kind === "crash") {
-    return <CrashGame name={name} image={image} />;
-  }
-
   return (
     <>
+      <ParticlesBackground />
       <main className="relative z-10 min-h-screen pb-24">
-        <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(120%_70%_at_50%_-10%,oklch(0.541_0.145_158/0.24),transparent_65%)]" />
-        <div className="pointer-events-none fixed inset-x-0 bottom-0 -z-10 h-64 bg-[radial-gradient(70%_100%_at_50%_100%,oklch(0.64_0.145_158/0.14),transparent_70%)]" />
-
-        {/* Top bar */}
-        <header className="sticky top-0 z-30 border-b border-primary/20 bg-background/25 backdrop-blur-xl">
-          <div className="mx-auto flex max-w-3xl items-center justify-between gap-2 px-4 py-2.5">
+        <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(120%_80%_at_50%_-10%,oklch(0.85_0.15_88/0.12),transparent_60%)]" />
+        <header className="sticky top-0 z-30 border-b border-gold/25 bg-background/60 backdrop-blur-xl">
+          <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-3">
             <Link
               to="/lobby"
-              className="flex items-center gap-1.5 rounded-full border border-primary/30 px-3 py-1.5 text-xs font-semibold text-muted-foreground transition-colors hover:border-accent hover:text-accent"
+              className="flex items-center gap-1.5 rounded-full border border-gold/25 px-3 py-1.5 text-xs font-semibold text-muted-foreground transition-colors hover:border-gold/60 hover:text-gold"
             >
               <svg
                 aria-hidden="true"
@@ -195,58 +188,49 @@ function GamePredictor() {
               </svg>
               Lobby
             </Link>
-            <img
-              src={brandLogo}
-              alt="Smart Odds logo"
-              width={1253}
-              height={844}
-              className="h-8 w-12 rounded-lg border border-accent/25 object-cover"
-            />
-            <span className="flex items-center gap-1 rounded-full border border-accent/40 px-2.5 py-1 text-[9px] font-bold tracking-widest text-accent">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent/70" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
-              </span>
-              LIVE
+            <span className="gold-text text-sm font-extrabold tracking-[0.32em]">
+              Smart Odds
             </span>
           </div>
         </header>
 
-        <div className="mx-auto max-w-md px-4">
-          {/* Game logo */}
-          <section className="animate-rise relative mt-5 overflow-hidden rounded-3xl border border-primary/30 bg-card/30">
+        <div className="mx-auto max-w-3xl px-4">
+          {/* Game hero */}
+          <section className="luxe-panel luxe-hairline animate-rise relative mt-6 overflow-hidden">
             <img
               src={image}
               alt={`${name} game artwork`}
               width={301}
               height={180}
-              className="h-36 w-full object-cover"
+              className="h-44 w-full object-cover opacity-60 sm:h-60"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/45 to-transparent" />
-            <div className="absolute inset-x-0 bottom-2 text-center">
-              <h1 className="gold-shimmer-text text-2xl font-black tracking-tight">{name}</h1>
-              <p className="text-[9px] uppercase tracking-[0.32em] text-muted-foreground">
-                AI Signal Predictor
-              </p>
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/75 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4">
+              <div>
+                <h1 className="gold-text text-xl font-black tracking-tight sm:text-3xl">{name}</h1>
+                <p className="mt-1 text-[10px] uppercase tracking-[0.34em] text-muted-foreground">
+                  AI Signal Predictor
+                </p>
+              </div>
+              <span className="flex items-center gap-1.5 rounded-full border border-gold/50 bg-background/70 px-3 py-1 text-[10px] font-bold tracking-widest text-gold backdrop-blur-md">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold/70" />
+                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-gold" />
+                </span>
+                LIVE
+              </span>
             </div>
           </section>
 
-          {/* Quick chips */}
-          <div className="mt-3 grid grid-cols-3 gap-2">
-            <Chip label="Engine" value="AI v4" />
-            <Chip label="Mode" value={isRowGame ? "Rows" : "Timing"} />
-            <Chip label="Status" value={phase === "ready" ? "Enter" : "Live"} tone="text-accent" />
-          </div>
-
-          {/* Prediction console */}
-          <section className="animate-rise relative mt-4 overflow-hidden rounded-3xl border border-primary/25 bg-card/30 p-4 backdrop-blur-xl">
-            <div className="pointer-events-none absolute inset-0 opacity-[0.14] [background-image:linear-gradient(oklch(0.64_0.145_158/0.5)_1px,transparent_1px),linear-gradient(90deg,oklch(0.64_0.145_158/0.5)_1px,transparent_1px)] [background-size:26px_26px]" />
-            <div className="pointer-events-none absolute -left-14 -top-14 h-44 w-44 rounded-full bg-primary/20 blur-[70px]" />
+          {/* Prediction board */}
+          <section className="luxe-panel luxe-hairline animate-rise relative mt-5 overflow-hidden p-5">
+            <div className="pointer-events-none absolute -left-16 -top-16 h-48 w-48 rounded-full bg-primary/15 blur-[70px]" />
+            <div className="pointer-events-none absolute -bottom-16 -right-10 h-48 w-48 rounded-full bg-gold/10 blur-[70px]" />
 
             {kind !== "none" && (
               <>
-                <div className="relative flex items-center justify-between border-b border-primary/20 pb-2.5">
-                  <h2 className="text-[10px] font-black uppercase tracking-[0.3em] text-accent">
+                <div className="relative flex items-center justify-between border-b border-gold/15 pb-3">
+                  <h2 className="gold-text text-xs font-black uppercase tracking-[0.3em]">
                     Prediction
                   </h2>
                   <span className="text-[10px] font-semibold text-muted-foreground" dir="rtl">
@@ -272,26 +256,25 @@ function GamePredictor() {
             )}
 
             {/* Status / CTA */}
-            <div className="relative mt-5">
+            <div className="relative mt-6">
               {isRowGame ? (
-                <div className="grid grid-cols-2 gap-3">
+                <div className="space-y-3">
                   <button
                     type="button"
                     onClick={revealNextRow}
-                    className="gold-button rounded-2xl px-4 py-4 text-sm font-black uppercase tracking-[0.18em] transition-transform active:scale-95"
+                    className="gold-button luxe-sheen w-full rounded-2xl px-6 py-4 text-base font-black uppercase tracking-[0.25em] transition-transform active:scale-[0.98]"
                   >
-                    <span className="relative z-10">
-                      {revealCount === 0 ? "بدأ" : "الصف التالي"}
-                    </span>
+                    <span className="relative z-10">{revealCount === 0 ? "بدأ" : "الصف التالي"}</span>
                   </button>
-                  <button
-                    type="button"
-                    onClick={resetRows}
-                    disabled={revealCount === 0}
-                    className="rounded-2xl border border-primary/40 px-4 py-4 text-sm font-black uppercase tracking-[0.18em] text-muted-foreground transition-all hover:border-accent hover:text-accent active:scale-95 disabled:opacity-40"
-                  >
-                    إعادة
-                  </button>
+                  {revealCount > 0 && (
+                    <button
+                      type="button"
+                      onClick={resetRows}
+                      className="w-full rounded-full border border-gold/30 px-5 py-2 text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground transition-colors hover:border-gold hover:text-gold"
+                    >
+                      توقع جديد
+                    </button>
+                  )}
                 </div>
               ) : null}
 
@@ -299,24 +282,24 @@ function GamePredictor() {
                 <button
                   type="button"
                   onClick={start}
-                  className="gold-button w-full rounded-2xl px-6 py-4 text-base font-black uppercase tracking-[0.22em] transition-transform active:scale-[0.98]"
+                  className="gold-button luxe-sheen w-full rounded-2xl px-6 py-4 text-base font-black uppercase tracking-[0.25em] transition-transform active:scale-[0.98]"
                 >
                   <span className="relative z-10">بدأ</span>
                 </button>
               )}
 
               {!isRowGame && phase === "waiting" && (
-                <div className="rounded-2xl border border-primary/30 bg-background/25 p-5 text-center">
+                <div className="luxe-panel p-5 text-center">
                   <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
                     Enter at
                   </p>
-                  <p className="mt-1 font-mono text-2xl font-extrabold text-accent">
+                  <p className="gold-text mt-1 font-mono text-2xl font-extrabold">
                     {enterAt != null ? formatEnterTime(enterAt) : "--:--"}
                   </p>
                   <p className="mt-3 text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
                     Next entry in
                   </p>
-                  <p className="mt-1 font-mono text-4xl font-black tabular-nums text-foreground">
+                  <p className="mt-1 font-mono text-4xl font-black text-foreground drop-shadow-[0_0_22px_oklch(0.85_0.15_88/0.35)]">
                     {fmt(remaining)}
                   </p>
                   <p className="mt-2 text-xs text-muted-foreground" dir="rtl">
@@ -324,7 +307,7 @@ function GamePredictor() {
                   </p>
                   <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-muted/60">
                     <div
-                      className="h-full rounded-full bg-gradient-to-r from-primary to-accent transition-[width] duration-300"
+                      className="h-full rounded-full bg-gradient-to-r from-gold-deep via-gold to-gold-soft transition-[width] duration-300"
                       style={{
                         width: `${Math.min(100, Math.max(0, 100 - (remaining / total) * 100))}%`,
                       }}
@@ -334,22 +317,22 @@ function GamePredictor() {
               )}
 
               {!isRowGame && phase === "ready" && (
-                <div className="rounded-2xl border border-accent/60 bg-background/25 p-6 text-center shadow-[0_0_50px_-18px_oklch(0.64_0.145_158/0.9)]">
-                  <p className="gold-shimmer-text text-3xl font-black" dir="rtl">
+                <div className="luxe-panel border-gold/60 p-6 text-center shadow-[0_0_60px_-15px_oklch(0.85_0.15_88/0.6)]">
+                  <p className="gold-text text-3xl font-black" dir="rtl">
                     خش جيم 🚀
                   </p>
                   <p className="mt-2 text-xs text-muted-foreground" dir="rtl">
                     دخول الآن على {name} بالتوقع اللي فوق
                   </p>
-                  <p className="mt-1 font-mono text-xs text-accent">
+                  <p className="mt-1 font-mono text-xs text-gold">
                     {enterAt != null ? formatEnterTime(enterAt) : ""}
                   </p>
                   <button
                     type="button"
                     onClick={reset}
-                    className="mt-4 rounded-full border border-primary/40 px-5 py-2 text-xs font-bold uppercase tracking-[0.22em] text-muted-foreground transition-colors hover:border-accent hover:text-accent"
+                    className="mt-4 rounded-full border border-gold/30 px-5 py-2 text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground transition-colors hover:border-gold hover:text-gold"
                   >
-                    إعادة
+                    توقع جديد
                   </button>
                 </div>
               )}
@@ -365,28 +348,20 @@ function GamePredictor() {
   );
 }
 
-function Chip({ label, value, tone }: { label: string; value: string; tone?: string }) {
-  return (
-    <div className="rounded-xl border border-primary/20 bg-card/25 px-2 py-1.5 text-center backdrop-blur-md">
-      <p className="text-[8px] uppercase tracking-[0.2em] text-muted-foreground">{label}</p>
-      <p className={`mt-0.5 text-xs font-black ${tone ?? "text-foreground"}`}>{value}</p>
-    </div>
-  );
-}
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-xl border border-primary/25 bg-background/25 p-3 text-center backdrop-blur-md">
-      <p className="text-[9px] uppercase tracking-[0.26em] text-muted-foreground">{label}</p>
-      <p className="mt-1 text-lg font-black text-accent">{value}</p>
+    <div className="luxe-panel p-3 text-center">
+      <p className="text-[9px] uppercase tracking-[0.28em] text-muted-foreground">{label}</p>
+      <p className="gold-text mt-1 text-lg font-black">{value}</p>
     </div>
   );
 }
 
 const cellBase =
-  "relative flex aspect-square items-center justify-center overflow-hidden rounded-xl border border-gold/20 bg-[linear-gradient(180deg,oklch(0.22_0.0425_158/0.75),oklch(0.11_0.0255_158/0.85))] text-lg shadow-[inset_0_1px_0_oklch(1_0_0/0.1),0_6px_14px_-8px_oklch(0_0_0/0.9)] transition-all duration-300";
+  "relative flex aspect-square items-center justify-center overflow-hidden rounded-xl border border-gold/20 bg-[linear-gradient(180deg,oklch(0.22_0.05_300/0.75),oklch(0.11_0.03_300/0.85))] text-lg shadow-[inset_0_1px_0_oklch(1_0_0/0.1),0_6px_14px_-8px_oklch(0_0_0/0.9)] transition-all duration-300";
 const cellSafe =
-  "border-gold bg-[linear-gradient(180deg,oklch(0.64_0.145_158/0.35),oklch(0.62_0.13_158/0.25))] text-gold-soft shadow-[0_0_26px_oklch(0.64_0.145_158/0.55),inset_0_1px_0_oklch(1_0_0/0.25)]";
+  "border-gold bg-[linear-gradient(180deg,oklch(0.85_0.15_88/0.35),oklch(0.62_0.13_75/0.25))] text-gold-soft shadow-[0_0_26px_oklch(0.85_0.15_88/0.55),inset_0_1px_0_oklch(1_0_0/0.25)]";
 const cellIdle = "text-muted-foreground/70";
 const cellHidden = "border-dashed border-gold/15 text-muted-foreground/30 opacity-70";
 
@@ -436,7 +411,7 @@ function Board({
             <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
               Roll {prediction.direction}
             </p>
-            <p className="mt-1 font-mono text-5xl font-extrabold text-primary drop-shadow-[0_0_22px_oklch(0.541_0.145_158/0.7)]">
+            <p className="mt-1 font-mono text-5xl font-extrabold text-primary drop-shadow-[0_0_22px_oklch(0.66_0.26_300/0.7)]">
               {prediction.target}
             </p>
           </div>
@@ -457,7 +432,7 @@ function Board({
                 <div key={i} className="flex flex-col items-center">
                   <div
                     className={`relative w-full rounded-2xl px-2 pt-2 transition-all duration-500 ${
-                      hit ? "drop-shadow-[0_0_26px_oklch(0.656_0.145_158/0.7)]" : ""
+                      hit ? "drop-shadow-[0_0_26px_oklch(0.8_0.18_180/0.7)]" : ""
                     }`}
                   >
                     <img
@@ -478,7 +453,7 @@ function Board({
                         alt="Predicted ball position"
                         width={80}
                         height={80}
-                        className="h-9 w-9 animate-[pulse-glow_2s_ease-in-out_infinite] drop-shadow-[0_0_18px_oklch(0.656_0.145_158/0.8)]"
+                        className="h-9 w-9 animate-[pulse-glow_2s_ease-in-out_infinite] drop-shadow-[0_0_18px_oklch(0.8_0.18_180/0.8)]"
                       />
                     ) : (
                       <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
@@ -511,7 +486,7 @@ function Board({
                     <img
                       src={minesGemAsset.url}
                       alt="Diamond"
-                      className="animate-reveal absolute inset-0 h-full w-full object-cover drop-shadow-[0_0_10px_oklch(0.64_0.145_158/0.6)]"
+                      className="animate-reveal absolute inset-0 h-full w-full object-cover drop-shadow-[0_0_10px_oklch(0.85_0.15_88/0.6)]"
                     />
                   ) : (
                     <span className="text-muted-foreground/60">◆</span>
@@ -537,7 +512,7 @@ function Board({
                   key={i}
                   className={`flex aspect-[4/3] flex-col items-center justify-center gap-2 rounded-2xl border transition-all duration-300 ${
                     hit
-                      ? "animate-reveal border-gold bg-gold/10 shadow-[0_0_30px_oklch(0.64_0.145_158/0.5)]"
+                      ? "animate-reveal border-gold bg-gold/10 shadow-[0_0_30px_oklch(0.85_0.15_88/0.5)]"
                       : "border-border bg-muted/25"
                   }`}
                 >
@@ -633,7 +608,7 @@ function Board({
           {prediction.steps.slice(0, revealCount).map((s, i) => (
             <div
               key={i}
-              className="flex items-center justify-between gap-3 rounded-2xl border border-gold/50 bg-gold/10 px-4 py-3 shadow-[0_0_26px_oklch(0.64_0.145_158/0.3)]"
+              className="flex items-center justify-between gap-3 rounded-2xl border border-gold/50 bg-gold/10 px-4 py-3 shadow-[0_0_26px_oklch(0.85_0.15_88/0.3)]"
               dir="rtl"
             >
               <span className="text-sm font-extrabold text-gold">اسحب الآن</span>
@@ -662,7 +637,7 @@ function Board({
                       key={c}
                       className={`flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border transition-all duration-300 ${
                         safe
-                          ? "border-gold bg-gold/20 shadow-[0_0_20px_oklch(0.64_0.145_158/0.55)]"
+                          ? "border-gold bg-gold/20 shadow-[0_0_20px_oklch(0.85_0.15_88/0.55)]"
                           : "border-border bg-muted/30"
                       }`}
                     >
@@ -713,7 +688,7 @@ function Board({
                 </div>
                 {cashout && (
                   <span
-                    className="shrink-0 rounded-full border border-gold bg-gold/10 px-2 py-1 text-[10px] font-extrabold text-gold shadow-[0_0_18px_oklch(0.64_0.145_158/0.5)]"
+                    className="shrink-0 rounded-full border border-gold bg-gold/10 px-2 py-1 text-[10px] font-extrabold text-gold shadow-[0_0_18px_oklch(0.85_0.15_88/0.5)]"
                     dir="rtl"
                   >
                     اسحب الآن
@@ -739,7 +714,7 @@ function Board({
                     key={r}
                     className={`flex aspect-square items-center justify-center rounded-xl border text-2xl ${
                       r === prediction.payline - 1
-                        ? "border-gold bg-gold/10 shadow-[0_0_24px_oklch(0.64_0.145_158/0.45)]"
+                        ? "border-gold bg-gold/10 shadow-[0_0_24px_oklch(0.85_0.15_88/0.45)]"
                         : "border-border/50 opacity-60"
                     }`}
                   >

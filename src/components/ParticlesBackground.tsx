@@ -24,13 +24,13 @@ export function ParticlesBackground() {
       canvas.width = w * dpr;
       canvas.height = h * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const count = 80;
+      const count = Math.min(55, Math.max(22, Math.round((w * h) / 26000)));
       particles = Array.from({ length: count }, () => ({
         x: Math.random() * w,
         y: Math.random() * h,
         vx: (Math.random() - 0.5) * 0.35,
         vy: (Math.random() - 0.5) * 0.35,
-        r: Math.random() * 1.2 + 0.5,
+        r: Math.random() * 1.6 + 0.8,
       }));
     };
 
@@ -44,11 +44,28 @@ export function ParticlesBackground() {
         if (p.y < 0 || p.y > h) p.vy *= -1;
       }
 
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const a = particles[i]!;
+          const b = particles[j]!;
+          const dx = a.x - b.x;
+          const dy = a.y - b.y;
+          const dist = Math.hypot(dx, dy);
+          if (dist < 100) {
+            ctx.strokeStyle = `oklch(0.62 0.24 300 / ${0.24 * (1 - dist / 100)})`;
+            ctx.lineWidth = 0.7;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
+        }
+      }
 
       for (const p of particles) {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = "oklch(0.574 0.145 158 / 0.85)";
+        ctx.fillStyle = "oklch(0.7 0.26 300 / 0.85)";
         ctx.fill();
       }
 
