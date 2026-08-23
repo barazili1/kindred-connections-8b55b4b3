@@ -239,7 +239,7 @@ export function CrashGame({ name, image }: { name: string; image: string }) {
               type="button"
               onClick={start}
               disabled={phase === "running"}
-              className="gold-button luxe-sheen rounded-2xl px-5 py-4 text-sm font-black uppercase tracking-[0.2em] transition-transform active:scale-95 disabled:opacity-60"
+              className="gold-button rounded-2xl px-5 py-4 text-sm font-black uppercase tracking-[0.2em] transition-transform active:scale-95 disabled:opacity-60"
             >
               <span className="relative z-10">بدأ</span>
             </button>

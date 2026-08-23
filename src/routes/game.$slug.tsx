@@ -273,7 +273,7 @@ function GamePredictor() {
                   <button
                     type="button"
                     onClick={revealNextRow}
-                    className="gold-button luxe-sheen rounded-2xl px-4 py-4 text-sm font-black uppercase tracking-[0.18em] transition-transform active:scale-95"
+                    className="gold-button rounded-2xl px-4 py-4 text-sm font-black uppercase tracking-[0.18em] transition-transform active:scale-95"
                   >
                     <span className="relative z-10">
                       {revealCount === 0 ? "بدأ" : "الصف التالي"}
@@ -294,7 +294,7 @@ function GamePredictor() {
                 <button
                   type="button"
                   onClick={start}
-                  className="gold-button luxe-sheen w-full rounded-2xl px-6 py-4 text-base font-black uppercase tracking-[0.22em] transition-transform active:scale-[0.98]"
+                  className="gold-button w-full rounded-2xl px-6 py-4 text-base font-black uppercase tracking-[0.22em] transition-transform active:scale-[0.98]"
                 >
                   <span className="relative z-10">بدأ</span>
                 </button>
