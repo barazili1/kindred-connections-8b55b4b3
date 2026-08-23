@@ -350,7 +350,7 @@ function TermsPage() {
                 }
                 setChecking(true);
               }}
-              className="gold-button luxe-sheen w-full rounded-2xl px-4 py-4 text-sm font-extrabold tracking-[0.12em] transition-transform active:scale-[0.98]"
+              className="gold-button w-full rounded-2xl px-4 py-4 text-sm font-extrabold tracking-[0.12em] transition-transform active:scale-[0.98]"
             >
               {checking ? "جارٍ التحقق…" : "التحقق من الشروط"}
             </button>
