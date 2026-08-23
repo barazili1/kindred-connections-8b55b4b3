@@ -1,11 +1,17 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 import logo from "@/assets/brand-logo.jpg";
 import gooobetLogo from "@/assets/platforms/gooobet.png";
 import megapariLogo from "@/assets/platforms/megapari.png";
 import paripulseLogo from "@/assets/platforms/paripulse.png";
 import winwinLogo from "@/assets/platforms/winwin.png";
+import stepDeposit from "@/assets/steps/step-deposit.png";
+import stepId from "@/assets/steps/step-id.png";
+import stepPlatform from "@/assets/steps/step-platform.png";
+import stepPromo from "@/assets/steps/step-promo.png";
+import stepRegister from "@/assets/steps/step-register.png";
+import stepTelegram from "@/assets/steps/step-telegram.png";
 import { useUserId } from "@/components/UserIdGate";
 
 export const Route = createFileRoute("/terms")({
@@ -48,8 +54,6 @@ const platforms = [
 
 const PROMO = "Gooo33";
 const TELEGRAM = "https://t.me/+SHa12LG9SFQ3YWE0";
-const VIDEO_URL =
-  "https://www.image2url.com/r2/default/videos/1787173591197-279815ad-1f2b-4d40-ae23-080397e53271.mp4";
 
 function TermsPage() {
   const navigate = useNavigate();
@@ -62,22 +66,6 @@ function TermsPage() {
   const [joined, setJoined] = useState(false);
   const [registered, setRegistered] = useState(false);
   const [deposited, setDeposited] = useState(false);
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-
-  useEffect(() => {
-    const el = videoRef.current;
-    if (!el) return;
-    el.muted = false;
-    el.volume = 1;
-    void el.play().catch(() => {
-      const unlock = () => {
-        el.muted = false;
-        void el.play();
-      };
-      window.addEventListener("pointerdown", unlock, { once: true });
-      window.addEventListener("touchstart", unlock, { once: true });
-    });
-  }, []);
 
   useEffect(() => {
     if (!checking) return;
@@ -119,7 +107,7 @@ function TermsPage() {
 
       <main className="relative z-10 min-h-screen pb-28" dir="rtl">
         {/* Header */}
-        <header className="sticky top-0 z-30 border-b border-accent/15 bg-background/30 backdrop-blur-2xl">
+        <header className="sticky top-0 z-30 border-b border-accent/15 bg-background/25 backdrop-blur-2xl">
           <div className="mx-auto flex max-w-2xl items-center justify-between px-4 py-2.5">
             <span className="text-[13px] font-extrabold tracking-[0.28em] text-accent">
               SMART ODDS
@@ -130,7 +118,7 @@ function TermsPage() {
           </div>
           <div className="h-[3px] w-full bg-foreground/5">
             <span
-              className="block h-full bg-accent transition-[width] duration-700"
+              className="block h-full bg-accent shadow-[0_0_14px_oklch(0.72_0.17_165/0.9)] transition-[width] duration-700"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -138,42 +126,42 @@ function TermsPage() {
 
         <div className="mx-auto max-w-2xl px-4">
           {/* Hero */}
-          <section className="animate-step-in flex flex-col items-center pt-8">
+          <section className="animate-step-in relative mt-6 overflow-hidden rounded-[2rem] border border-accent/20 bg-card/10 px-5 py-7 text-center backdrop-blur-md">
+            <span className="pointer-events-none absolute -top-24 left-1/2 h-48 w-48 -translate-x-1/2 rounded-full bg-accent/20 blur-[80px]" />
             <img
               src={logo}
               alt="Smart Odds logo"
               width={1253}
               height={844}
-              className="animate-float w-56 max-w-full rounded-3xl border border-accent/20 shadow-[0_0_60px_-18px_oklch(0.68_0.18_158/0.7)]"
+              className="animate-float relative mx-auto w-52 max-w-full rounded-3xl border border-accent/20 shadow-[0_0_60px_-18px_oklch(0.72_0.17_165/0.7)]"
             />
 
-            <h1 className="mt-5 text-2xl font-extrabold tracking-[0.24em] text-accent">الشـروط</h1>
-            <p className="mt-3 text-center text-[13px] font-extrabold text-foreground">
+            <h1 className="relative mt-5 text-2xl font-extrabold tracking-[0.24em] text-accent">
+              الشـروط
+            </h1>
+            <p className="relative mt-3 text-[13.5px] font-extrabold text-foreground">
               اسكربت نسبة الحظ RTB جاهز بالسيستم
             </p>
-            <p className="mt-2 max-w-xs text-center text-[11.5px] leading-relaxed text-muted-foreground">
+            <p className="relative mx-auto mt-2 max-w-xs text-[11.5px] leading-relaxed text-muted-foreground">
               سجل دلوقتي وابدأ مكسبك ونفذ الشروط واحصل على نسبه حظ مضمونه 100%
             </p>
 
-            <div className="mt-5 flex h-[200px] w-[350px] max-w-full shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-accent/25 bg-card/20 backdrop-blur-sm">
-              <video
-                ref={videoRef}
-                src={VIDEO_URL}
-                width={350}
-                height={200}
-                autoPlay
-                playsInline
-                loop
-                controls
-                preload="metadata"
-                className="block max-h-full max-w-full object-contain"
-              />
+            <div className="relative mt-5 flex items-center justify-center gap-2 text-[10px] font-bold tracking-[0.18em] text-accent/80">
+              <span className="rounded-full border border-accent/25 bg-background/25 px-3 py-1">
+                RTB ENGINE
+              </span>
+              <span className="rounded-full border border-accent/25 bg-background/25 px-3 py-1">
+                100% LUCK
+              </span>
+              <span className="rounded-full border border-accent/25 bg-background/25 px-3 py-1">
+                6 STEPS
+              </span>
             </div>
           </section>
 
           {/* Steps */}
-          <div className="mt-8 space-y-3">
-            <Step index={1} title="اختر المنصة" complete={states[0]} delay={0}>
+          <div className="mt-6 space-y-3.5">
+            <Step index={1} title="اختر المنصة" icon={stepPlatform} complete={states[0]} delay={0}>
               <div className="grid grid-cols-4 gap-2">
                 {platforms.map((p) => {
                   const active = platform === p.id;
@@ -187,8 +175,8 @@ function TermsPage() {
                       }}
                       className={`flex h-[86px] w-full flex-col items-center justify-center gap-1.5 rounded-2xl border transition-all duration-300 ${
                         active
-                          ? "border-accent bg-accent/10 shadow-[0_0_30px_-10px_oklch(0.68_0.18_158/0.9)]"
-                          : "border-accent/15 bg-card/15 hover:border-accent/50"
+                          ? "border-accent bg-accent/10 shadow-[0_0_30px_-10px_oklch(0.72_0.17_165/0.9)]"
+                          : "border-accent/15 bg-card/10 hover:border-accent/50"
                       }`}
                     >
                       <span className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full border border-accent/25 bg-background/30">
@@ -197,6 +185,7 @@ function TermsPage() {
                           alt={p.name}
                           width={64}
                           height={64}
+                          loading="lazy"
                           decoding="async"
                           className="h-full w-full object-cover"
                         />
@@ -213,6 +202,7 @@ function TermsPage() {
             <Step
               index={2}
               title={`التسجيل في منصة ${selected ? selected.name : "…"}`}
+              icon={stepRegister}
               complete={states[1]}
               delay={60}
               locked={!platform}
@@ -230,7 +220,13 @@ function TermsPage() {
               </a>
             </Step>
 
-            <Step index={3} title="الانضمام إلى قناة التليجرام" complete={states[2]} delay={120}>
+            <Step
+              index={3}
+              title="الانضمام إلى قناة التليجرام"
+              icon={stepTelegram}
+              complete={states[2]}
+              delay={120}
+            >
               <a
                 href={TELEGRAM}
                 target="_blank"
@@ -238,11 +234,17 @@ function TermsPage() {
                 onClick={() => setJoined(true)}
                 className="gold-button block w-full rounded-2xl px-4 py-3.5 text-center text-sm font-extrabold transition-transform active:scale-[0.98]"
               >
-                انضمام
+                الانضمام
               </a>
             </Step>
 
-            <Step index={4} title="إنشاء حساب بالبروموكود الخاص بنا" complete={states[3]} delay={180}>
+            <Step
+              index={4}
+              title="نسخ البروموكود واستخدامه"
+              icon={stepPromo}
+              complete={states[3]}
+              delay={180}
+            >
               <div className="flex items-center gap-2">
                 <span
                   dir="ltr"
@@ -263,12 +265,18 @@ function TermsPage() {
               </div>
             </Step>
 
-            <Step index={5} title="إيداع مبلغ بحد أدنى" complete={states[4]} delay={240}>
+            <Step
+              index={5}
+              title="إيداع مبلغ بحد أدنى"
+              icon={stepDeposit}
+              complete={states[4]}
+              delay={240}
+            >
               <div className="grid grid-cols-2 gap-3">
                 {["300 جنيه", "6 دولار"].map((amount) => (
                   <span
                     key={amount}
-                    className="rounded-2xl border border-accent/20 bg-card/20 px-4 py-4 text-center text-base font-extrabold text-accent"
+                    className="rounded-2xl border border-accent/20 bg-card/15 px-4 py-4 text-center text-base font-extrabold text-accent"
                   >
                     {amount}
                   </span>
@@ -287,7 +295,13 @@ function TermsPage() {
               </button>
             </Step>
 
-            <Step index={6} title="إدخال الـ ID الخاص بك" complete={states[5]} delay={300}>
+            <Step
+              index={6}
+              title="إدخال الـ ID الخاص بك"
+              icon={stepId}
+              complete={states[5]}
+              delay={300}
+            >
               <input
                 value={value}
                 onChange={(e) => {
@@ -339,6 +353,7 @@ function TermsPage() {
 function Step({
   index,
   title,
+  icon,
   complete,
   delay = 0,
   locked = false,
@@ -346,6 +361,7 @@ function Step({
 }: {
   index: number;
   title: string;
+  icon: string;
   complete?: boolean | undefined;
   delay?: number | undefined;
   locked?: boolean | undefined;
@@ -353,24 +369,45 @@ function Step({
 }) {
   return (
     <section
-      className={`animate-step-in relative rounded-3xl border p-4 backdrop-blur-md transition-all duration-500 ${
+      className={`animate-step-in relative overflow-hidden rounded-3xl border p-4 backdrop-blur-md transition-all duration-500 ${
         locked ? "opacity-60" : ""
-      } ${complete ? "border-accent/50 bg-accent/[0.06]" : "border-accent/15 bg-card/15"}`}
+      } ${complete ? "border-accent/50 bg-accent/[0.06]" : "border-accent/15 bg-card/10"}`}
       style={{ animationDelay: `${delay}ms` }}
     >
-      <div className="mb-3 flex items-center gap-2">
+      <span
+        className={`pointer-events-none absolute -left-10 -top-10 h-28 w-28 rounded-full blur-[60px] transition-opacity duration-500 ${
+          complete ? "bg-accent/30" : "bg-accent/10"
+        }`}
+      />
+      <div className="relative mb-3 flex items-center gap-3">
+        <span className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-accent/25 bg-background/25">
+          <img
+            src={icon}
+            alt=""
+            width={512}
+            height={512}
+            loading="lazy"
+            decoding="async"
+            className="h-10 w-10 object-contain drop-shadow-[0_0_10px_oklch(0.72_0.17_165/0.55)]"
+          />
+        </span>
+        <div className="min-w-0 flex-1">
+          <p className="text-[9.5px] font-bold tracking-[0.28em] text-accent/70">STEP {index}</p>
+          <h2 className="truncate text-[13.5px] font-extrabold tracking-wide text-foreground">
+            {title}
+          </h2>
+        </div>
         <span
           className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border text-[11px] font-extrabold ${
             complete
               ? "border-accent bg-accent/20 text-accent"
-              : "border-accent/35 bg-background/40 text-muted-foreground"
+              : "border-accent/30 bg-background/40 text-muted-foreground"
           }`}
         >
           {complete ? "✓" : index}
         </span>
-        <h2 className="text-[13px] font-extrabold tracking-wide text-foreground">{title}</h2>
       </div>
-      {children}
+      <div className="relative">{children}</div>
     </section>
   );
 }
