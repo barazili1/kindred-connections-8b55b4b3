@@ -6,7 +6,7 @@ import { buildPrediction } from "@/lib/predict";
 type Phase = "idle" | "running" | "done";
 
 function randomHistory() {
-  return Array.from({ length: 8 }, () => Number((1 + Math.random() * 6).toFixed(2)));
+  return Array.from({ length: 8 }, () => Number((1 + Math.random() * 4).toFixed(2)));
 }
 
 /** Flight-deck styled crash predictor: animated odds dial, climbing curve and plane. */
@@ -27,7 +27,7 @@ export function CrashGame({ name, image }: { name: string; image: string }) {
   const start = () => {
     if (phase === "running") return;
     const p = buildPrediction("crash");
-    const t = p.kind === "crash" ? Number.parseFloat(p.multiplier) : 2;
+    const t = Number((1 + Math.random() * 4).toFixed(2));
     setTarget(t);
     setRound(p.kind === "crash" ? p.round : null);
     setPhase("running");

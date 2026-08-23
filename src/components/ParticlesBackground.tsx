@@ -24,13 +24,13 @@ export function ParticlesBackground() {
       canvas.width = w * dpr;
       canvas.height = h * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const count = Math.min(55, Math.max(22, Math.round((w * h) / 26000)));
+      const count = 1000;
       particles = Array.from({ length: count }, () => ({
         x: Math.random() * w,
         y: Math.random() * h,
         vx: (Math.random() - 0.5) * 0.35,
         vy: (Math.random() - 0.5) * 0.35,
-        r: Math.random() * 1.6 + 0.8,
+        r: Math.random() * 1.2 + 0.5,
       }));
     };
 
@@ -51,7 +51,7 @@ export function ParticlesBackground() {
           const dx = a.x - b.x;
           const dy = a.y - b.y;
           const dist = Math.hypot(dx, dy);
-          if (dist < 100) {
+          if (false) {
             ctx.strokeStyle = `oklch(0.62   0.24 / ${0.24 * (1 - dist / 100)})`;
             ctx.lineWidth = 0.7;
             ctx.beginPath();
