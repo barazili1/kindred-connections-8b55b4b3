@@ -15,12 +15,12 @@ export const Route = createFileRoute("/lobby")({
       {
         name: "description",
         content:
-          "Browse casino and instant win games in the Smart Odds lobby, from crash classics to slots and hold-and-win hits.",
+          "Browse instant win games in the Smart Odds lobby, from scratch cards to slots and fruit classics.",
       },
       { property: "og:title", content: "Lobby — Smart Odds" },
       {
         property: "og:description",
-        content: "Browse casino and instant win games in the Smart Odds lobby.",
+        content: "Browse instant win games in the Smart Odds lobby.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
