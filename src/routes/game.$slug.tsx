@@ -165,7 +165,12 @@ function GamePredictor() {
     setEnterAt(null);
   };
 
+  if (kind === "crash") {
+    return <CrashGame name={name} image={image} />;
+  }
+
   return (
+
     <>
       <ParticlesBackground />
       <main className="relative z-10 min-h-screen pb-24">
