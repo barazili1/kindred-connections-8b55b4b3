@@ -158,7 +158,7 @@ function TermsPage() {
           {/* Steps */}
           <div className="mt-6 space-y-3.5">
             <Step index={1} title="اختر المنصة" icon={stepPlatform} complete={states[0]} delay={0}>
-              <div className="grid grid-cols-4 gap-2">
+              <div className="grid grid-cols-2 gap-2">
                 {platforms.map((p) => {
                   const active = platform === p.id;
                   return (
