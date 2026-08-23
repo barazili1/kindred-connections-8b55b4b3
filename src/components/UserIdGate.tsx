@@ -46,7 +46,7 @@ export function UserIdGate({
   if (!ready || userId) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 p-5 backdrop-blur-md">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/25 p-5 backdrop-blur-md">
       <div className="animate-rise w-full max-w-sm rounded-3xl border border-primary/35 bg-[linear-gradient(160deg,oklch(0.16_0.0425_15/0.95),oklch(0.09_0.0255_15/0.97))] p-6 text-center shadow-[0_30px_80px_-30px_oklch(0_0_0/0.9)]">
         {connecting ? (
           <div dir="rtl" className="flex flex-col items-center gap-4 py-6">
@@ -68,7 +68,7 @@ export function UserIdGate({
               inputMode="numeric"
               placeholder="ID"
               dir="ltr"
-              className="w-full rounded-2xl border border-primary/30 bg-background/60 px-4 py-3 text-center text-base font-bold tracking-[0.2em] text-foreground outline-none transition-colors focus:border-primary"
+              className="w-full rounded-2xl border border-primary/30 bg-background/25 px-4 py-3 text-center text-base font-bold tracking-[0.2em] text-foreground outline-none transition-colors focus:border-primary"
             />
             {error ? <p className="text-[11px] font-semibold text-destructive">{error}</p> : null}
             <button

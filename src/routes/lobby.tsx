@@ -120,7 +120,7 @@ function Lobby() {
       <div className="pointer-events-none fixed inset-x-0 bottom-0 -z-10 h-56 bg-[radial-gradient(60%_100%_at_50%_100%,oklch(0.64_0.145_10/0.12),transparent_70%)]" />
 
       {/* Top bar */}
-      <header className="sticky top-0 z-30 border-b border-primary/15 bg-background/80 backdrop-blur-xl">
+      <header className="sticky top-0 z-30 border-b border-primary/15 bg-background/25 backdrop-blur-xl">
         <div className="mx-auto flex max-w-6xl items-center gap-2 px-3 py-2">
           <img
             src={logo}
@@ -147,7 +147,7 @@ function Lobby() {
       <div className="mx-auto max-w-6xl px-4">
         {/* Luck console */}
         <Reveal>
-          <section className="relative mt-4 overflow-hidden rounded-3xl border border-primary/25 bg-card/70 p-4 backdrop-blur-xl">
+          <section className="relative mt-4 overflow-hidden rounded-3xl border border-primary/25 bg-card/30 p-4 backdrop-blur-xl">
             <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-primary/20 blur-3xl" />
             <div className="relative flex items-start justify-between gap-3" dir="rtl">
               <div className="text-right">
@@ -161,7 +161,7 @@ function Lobby() {
                   النسب بتتحدث تلقائيًا لكل الألعاب
                 </p>
               </div>
-              <div className="shrink-0 rounded-2xl border border-accent/40 bg-background/60 px-3 py-2 text-center">
+              <div className="shrink-0 rounded-2xl border border-accent/40 bg-background/25 px-3 py-2 text-center">
                 <p className="font-mono text-xl font-black tabular-nums text-accent">
                   {fmtLeft(slot.endsAt - now)}
                 </p>
@@ -204,7 +204,7 @@ function Lobby() {
                       key={g.name}
                       to="/game/$slug"
                       params={{ slug: slugify(g.name) }}
-                      className="group relative w-40 shrink-0 overflow-hidden rounded-2xl border border-accent/40 bg-card transition-transform duration-300 hover:-translate-y-1"
+                      className="group relative w-40 shrink-0 overflow-hidden rounded-2xl border border-accent/40 bg-card/30 transition-transform duration-300 hover:-translate-y-1"
                     >
                       <img
                         src={g.image}
@@ -231,8 +231,8 @@ function Lobby() {
         )}
 
         {/* Sticky search + filters */}
-        <section className="sticky top-[45px] z-20 -mx-4 mt-6 bg-background/85 px-4 py-3 backdrop-blur-xl">
-          <label className="flex items-center gap-2 rounded-2xl border border-primary/25 bg-card px-3 py-2 transition-shadow focus-within:border-accent">
+        <section className="sticky top-[45px] z-20 -mx-4 mt-6 bg-background/25 px-4 py-3 backdrop-blur-xl">
+          <label className="flex items-center gap-2 rounded-2xl border border-primary/25 bg-card/30 px-3 py-2 transition-shadow focus-within:border-accent">
             <svg
               aria-hidden="true"
               viewBox="0 0 24 24"
@@ -282,7 +282,7 @@ function Lobby() {
                 <Link
                   to="/game/$slug"
                   params={{ slug: slugify(game.name) }}
-                  className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border bg-card text-left transition-all duration-300 hover:-translate-y-1 ${s.ring}`}
+                  className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border bg-card/30 text-left transition-all duration-300 hover:-translate-y-1 ${s.ring}`}
                 >
                   <div className="relative overflow-hidden">
                     <img
@@ -294,7 +294,7 @@ function Lobby() {
                       className="aspect-[301/180] w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <span
-                      className={`absolute right-1.5 top-1.5 rounded-full border border-background/40 bg-background/75 px-2 py-0.5 text-[9px] font-black backdrop-blur-md ${s.text}`}
+                      className={`absolute right-1.5 top-1.5 rounded-full border border-background/40 bg-background/25 px-2 py-0.5 text-[9px] font-black backdrop-blur-md ${s.text}`}
                     >
                       {info.luck}%
                     </span>
@@ -334,7 +334,7 @@ function Lobby() {
 
 function Stat({ label, value, tone }: { label: string; value: string; tone?: string }) {
   return (
-    <div className="rounded-xl border border-primary/20 bg-background/50 px-2 py-1.5 text-center">
+    <div className="rounded-xl border border-primary/20 bg-background/25 px-2 py-1.5 text-center">
       <p className="text-[8px] uppercase tracking-[0.2em] text-muted-foreground">{label}</p>
       <p className={`mt-0.5 font-mono text-sm font-black ${tone ?? "text-foreground"}`}>{value}</p>
     </div>

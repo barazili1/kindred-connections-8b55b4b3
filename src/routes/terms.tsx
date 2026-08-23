@@ -97,7 +97,7 @@ function TermsPage() {
     <>
       <div className="pointer-events-none fixed inset-0 z-0 bg-background" />
       {checking ? (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/85 p-5 backdrop-blur-xl">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/25 p-5 backdrop-blur-xl">
           <div
             dir="rtl"
             className="luxe-panel luxe-ring luxe-corners animate-step-in w-full max-w-sm overflow-hidden p-8 text-center"
@@ -123,7 +123,7 @@ function TermsPage() {
       <main className="relative z-10 min-h-screen pb-28" dir="rtl">
         <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-80 bg-primary/10" />
 
-        <header className="sticky top-0 z-30 border-b border-gold/15 bg-background/55 backdrop-blur-2xl">
+        <header className="sticky top-0 z-30 border-b border-gold/15 bg-background/25 backdrop-blur-2xl">
           <div className="mx-auto flex max-w-2xl items-center justify-between px-4 py-2.5">
             <span className="gold-shimmer-text text-[13px] font-extrabold tracking-[0.28em]">
               SMART ODDS
@@ -211,7 +211,7 @@ function TermsPage() {
                         className={`relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-full border transition-all duration-300 ${
                           active
                             ? "animate-reveal border-gold shadow-[0_0_20px_oklch(0.541_0.145_15/0.75)]"
-                            : "border-gold/25 bg-background/60 grayscale-[0.35] group-hover:grayscale-0"
+                            : "border-gold/25 bg-background/25 grayscale-[0.35] group-hover:grayscale-0"
                         }`}
                       >
                         <img
@@ -271,7 +271,7 @@ function TermsPage() {
               <div className="flex items-center gap-2">
                 <span
                   dir="ltr"
-                  className="luxe-ring flex-1 rounded-2xl border border-gold/25 bg-background/50 px-4 py-3.5 text-center text-base font-extrabold tracking-[0.3em] text-gold-soft"
+                  className="luxe-ring flex-1 rounded-2xl border border-gold/25 bg-background/25 px-4 py-3.5 text-center text-base font-extrabold tracking-[0.3em] text-gold-soft"
                 >
                   {PROMO}
                 </span>
@@ -322,7 +322,7 @@ function TermsPage() {
                 inputMode="numeric"
                 placeholder="ID"
                 dir="ltr"
-                className="w-full rounded-2xl border border-gold/25 bg-background/50 px-4 py-3.5 text-center text-lg font-bold tracking-[0.3em] text-foreground outline-none transition-all placeholder:tracking-normal placeholder:text-muted-foreground/60 focus:border-gold focus:shadow-[0_0_26px_-8px_oklch(0.541_0.145_15/0.9)]"
+                className="w-full rounded-2xl border border-gold/25 bg-background/25 px-4 py-3.5 text-center text-lg font-bold tracking-[0.3em] text-foreground outline-none transition-all placeholder:tracking-normal placeholder:text-muted-foreground/60 focus:border-gold focus:shadow-[0_0_26px_-8px_oklch(0.541_0.145_15/0.9)]"
               />
               {error ? (
                 <p className="animate-reveal mt-2 text-center text-[11px] font-semibold text-destructive">
@@ -334,7 +334,7 @@ function TermsPage() {
         </div>
 
         {/* Sticky action */}
-        <div className="fixed inset-x-0 bottom-0 z-30 border-t border-gold/15 bg-background/70 px-4 py-3 backdrop-blur-2xl">
+        <div className="fixed inset-x-0 bottom-0 z-30 border-t border-gold/15 bg-background/25 px-4 py-3 backdrop-blur-2xl">
           <div className="mx-auto max-w-2xl">
             <button
               type="button"

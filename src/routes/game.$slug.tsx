@@ -178,7 +178,7 @@ function GamePredictor() {
         <div className="pointer-events-none fixed inset-x-0 bottom-0 -z-10 h-64 bg-[radial-gradient(70%_100%_at_50%_100%,oklch(0.64_0.145_10/0.14),transparent_70%)]" />
 
         {/* Top bar */}
-        <header className="sticky top-0 z-30 border-b border-primary/20 bg-background/75 backdrop-blur-xl">
+        <header className="sticky top-0 z-30 border-b border-primary/20 bg-background/25 backdrop-blur-xl">
           <div className="mx-auto flex max-w-3xl items-center justify-between gap-2 px-4 py-2.5">
             <Link
               to="/lobby"
@@ -211,7 +211,7 @@ function GamePredictor() {
 
         <div className="mx-auto max-w-md px-4">
           {/* Game logo */}
-          <section className="animate-rise relative mt-5 overflow-hidden rounded-3xl border border-primary/30 bg-card">
+          <section className="animate-rise relative mt-5 overflow-hidden rounded-3xl border border-primary/30 bg-card/30">
             <img
               src={image}
               alt={`${name} game artwork`}
@@ -236,7 +236,7 @@ function GamePredictor() {
           </div>
 
           {/* Prediction console */}
-          <section className="animate-rise relative mt-4 overflow-hidden rounded-3xl border border-primary/25 bg-card/70 p-4 backdrop-blur-xl">
+          <section className="animate-rise relative mt-4 overflow-hidden rounded-3xl border border-primary/25 bg-card/30 p-4 backdrop-blur-xl">
             <div className="pointer-events-none absolute inset-0 opacity-[0.14] [background-image:linear-gradient(oklch(0.64_0.145_10/0.5)_1px,transparent_1px),linear-gradient(90deg,oklch(0.64_0.145_10/0.5)_1px,transparent_1px)] [background-size:26px_26px]" />
             <div className="pointer-events-none absolute -left-14 -top-14 h-44 w-44 rounded-full bg-primary/20 blur-[70px]" />
 
@@ -303,7 +303,7 @@ function GamePredictor() {
               )}
 
               {!isRowGame && phase === "waiting" && (
-                <div className="rounded-2xl border border-primary/30 bg-background/60 p-5 text-center">
+                <div className="rounded-2xl border border-primary/30 bg-background/25 p-5 text-center">
                   <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
                     Enter at
                   </p>
@@ -331,7 +331,7 @@ function GamePredictor() {
               )}
 
               {!isRowGame && phase === "ready" && (
-                <div className="rounded-2xl border border-accent/60 bg-background/60 p-6 text-center shadow-[0_0_50px_-18px_oklch(0.64_0.145_10/0.9)]">
+                <div className="rounded-2xl border border-accent/60 bg-background/25 p-6 text-center shadow-[0_0_50px_-18px_oklch(0.64_0.145_10/0.9)]">
                   <p className="gold-shimmer-text text-3xl font-black" dir="rtl">
                     خش جيم 🚀
                   </p>
@@ -364,7 +364,7 @@ function GamePredictor() {
 
 function Chip({ label, value, tone }: { label: string; value: string; tone?: string }) {
   return (
-    <div className="rounded-xl border border-primary/20 bg-card/60 px-2 py-1.5 text-center backdrop-blur-md">
+    <div className="rounded-xl border border-primary/20 bg-card/25 px-2 py-1.5 text-center backdrop-blur-md">
       <p className="text-[8px] uppercase tracking-[0.2em] text-muted-foreground">{label}</p>
       <p className={`mt-0.5 text-xs font-black ${tone ?? "text-foreground"}`}>{value}</p>
     </div>
@@ -373,7 +373,7 @@ function Chip({ label, value, tone }: { label: string; value: string; tone?: str
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-xl border border-primary/25 bg-background/50 p-3 text-center backdrop-blur-md">
+    <div className="rounded-xl border border-primary/25 bg-background/25 p-3 text-center backdrop-blur-md">
       <p className="text-[9px] uppercase tracking-[0.26em] text-muted-foreground">{label}</p>
       <p className="mt-1 text-lg font-black text-accent">{value}</p>
     </div>

@@ -77,7 +77,7 @@ export function CrashGame({ name, image }: { name: string; image: string }) {
       <div className="pointer-events-none fixed inset-x-0 bottom-0 -z-10 h-72 bg-[radial-gradient(70%_100%_at_50%_100%,oklch(0.64_0.145_10/0.16),transparent_70%)]" />
 
       {/* Top bar */}
-      <header className="sticky top-0 z-30 border-b border-primary/25 bg-background/70 backdrop-blur-xl">
+      <header className="sticky top-0 z-30 border-b border-primary/25 bg-background/25 backdrop-blur-xl">
         <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-3">
           <Link
             to="/lobby"
@@ -263,7 +263,7 @@ export function CrashGame({ name, image }: { name: string; image: string }) {
 
 function Hud({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-xl border border-primary/25 bg-background/50 px-2 py-2 text-center backdrop-blur-md">
+    <div className="rounded-xl border border-primary/25 bg-background/25 px-2 py-2 text-center backdrop-blur-md">
       <p className="text-[8px] uppercase tracking-[0.24em] text-muted-foreground">{label}</p>
       <p className="mt-0.5 font-mono text-sm font-black text-foreground">{value}</p>
     </div>
