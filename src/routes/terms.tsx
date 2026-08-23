@@ -2,8 +2,6 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
 import logo from "@/assets/brand-logo.jpg";
-import gooobetLogo from "@/assets/platforms/gooobet.png";
-import megapariLogo from "@/assets/platforms/megapari.png";
 import paripulseLogo from "@/assets/platforms/paripulse.png";
 import winwinLogo from "@/assets/platforms/winwin.png";
 import stepDeposit from "@/assets/steps/step-deposit.png";
@@ -36,14 +34,12 @@ export const Route = createFileRoute("/terms")({
 });
 
 const platforms = [
-  { id: "gooobet", name: "Gooobet", logo: gooobetLogo, url: "https://promogooo.click/Gooo33" },
   {
     id: "paripulse",
     name: "Paripulse",
     logo: paripulseLogo,
     url: "https://refpa22168.com/L?tag=d_3638295m_64499c_&site=3638295&ad=64499",
   },
-  { id: "megapari", name: "Megapari", logo: megapariLogo, url: "https://2787591.megapari-228091.com" },
   {
     id: "winwin",
     name: "Winwin",
@@ -162,7 +158,7 @@ function TermsPage() {
           {/* Steps */}
           <div className="mt-6 space-y-3.5">
             <Step index={1} title="اختر المنصة" icon={stepPlatform} complete={states[0]} delay={0}>
-              <div className="grid grid-cols-4 gap-2">
+              <div className="grid grid-cols-2 gap-2">
                 {platforms.map((p) => {
                   const active = platform === p.id;
                   return (
