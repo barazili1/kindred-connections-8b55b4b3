@@ -1,6 +1,7 @@
 import { Link, createFileRoute, notFound } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 
+import brandLogo from "@/assets/brand-logo.jpg";
 import appleCellAsset from "@/assets/g/apple-cell.png.asset.json";
 import appleGoodAsset from "@/assets/g/apple-good.png.asset.json";
 import minesGemAsset from "@/assets/g/mines-gem.png.asset.json";
