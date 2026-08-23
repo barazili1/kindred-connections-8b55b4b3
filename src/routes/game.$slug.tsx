@@ -6,6 +6,7 @@ import appleGoodAsset from "@/assets/g/apple-good.png.asset.json";
 import minesGemAsset from "@/assets/g/mines-gem.png.asset.json";
 import ballAsset from "@/assets/t/ball.png.asset.json";
 import cupAsset from "@/assets/t/cup.png.asset.json";
+import { CrashGame } from "@/components/CrashGame";
 import { ParticlesBackground } from "@/components/ParticlesBackground";
 import { useUserId } from "@/components/UserIdGate";
 import {
