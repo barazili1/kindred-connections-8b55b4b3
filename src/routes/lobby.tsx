@@ -218,7 +218,7 @@ function Lobby() {
                 onClick={() => setFilter(f.id)}
                 className={`shrink-0 rounded-full border px-3.5 py-1.5 text-[11px] font-bold transition-all active:scale-95 ${
                   filter === f.id
-                    ? "border-accent text-accent shadow-[0_0_18px_-6px_oklch(0.62_0.19_18/0.9)]"
+                    ? "border-accent text-accent shadow-[0_0_18px_-6px_oklch(0.62___0.19/0.9)]"
                     : "border-primary/25 text-muted-foreground hover:border-primary hover:text-foreground"
                 }`}
               >
