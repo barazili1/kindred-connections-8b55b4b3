@@ -171,16 +171,18 @@ function GamePredictor() {
   }
 
   return (
-
     <>
       <ParticlesBackground />
       <main className="relative z-10 min-h-screen pb-24">
-        <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(120%_80%_at_50%_-10%,oklch(0.78_0.19_232/0.12),transparent_60%)]" />
-        <header className="sticky top-0 z-30 border-b border-gold/25 bg-background/60 backdrop-blur-xl">
-          <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-3">
+        <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(120%_70%_at_50%_-10%,oklch(0.66_0.26_258/0.24),transparent_65%)]" />
+        <div className="pointer-events-none fixed inset-x-0 bottom-0 -z-10 h-64 bg-[radial-gradient(70%_100%_at_50%_100%,oklch(0.78_0.19_232/0.14),transparent_70%)]" />
+
+        {/* Top bar */}
+        <header className="sticky top-0 z-30 border-b border-primary/20 bg-background/75 backdrop-blur-xl">
+          <div className="mx-auto flex max-w-3xl items-center justify-between gap-2 px-4 py-2.5">
             <Link
               to="/lobby"
-              className="flex items-center gap-1.5 rounded-full border border-gold/25 px-3 py-1.5 text-xs font-semibold text-muted-foreground transition-colors hover:border-gold/60 hover:text-gold"
+              className="flex items-center gap-1.5 rounded-full border border-primary/30 px-3 py-1.5 text-xs font-semibold text-muted-foreground transition-colors hover:border-accent hover:text-accent"
             >
               <svg
                 aria-hidden="true"
@@ -194,49 +196,54 @@ function GamePredictor() {
               </svg>
               Lobby
             </Link>
-            <span className="gold-text text-sm font-extrabold tracking-[0.32em]">
+            <span className="gold-shimmer-text text-xs font-extrabold tracking-[0.28em]">
               Smart Odds
+            </span>
+            <span className="flex items-center gap-1 rounded-full border border-accent/40 px-2.5 py-1 text-[9px] font-bold tracking-widest text-accent">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent/70" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
+              </span>
+              LIVE
             </span>
           </div>
         </header>
 
-        <div className="mx-auto max-w-3xl px-4">
-          {/* Game hero */}
-          <section className="luxe-panel luxe-hairline animate-rise relative mt-6 overflow-hidden">
+        <div className="mx-auto max-w-md px-4">
+          {/* Game logo */}
+          <section className="animate-rise relative mt-5 overflow-hidden rounded-3xl border border-primary/30 bg-card">
             <img
               src={image}
               alt={`${name} game artwork`}
               width={301}
               height={180}
-              className="h-44 w-full object-cover opacity-60 sm:h-60"
+              className="h-36 w-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/75 to-transparent" />
-            <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4">
-              <div>
-                <h1 className="gold-text text-xl font-black tracking-tight sm:text-3xl">{name}</h1>
-                <p className="mt-1 text-[10px] uppercase tracking-[0.34em] text-muted-foreground">
-                  AI Signal Predictor
-                </p>
-              </div>
-              <span className="flex items-center gap-1.5 rounded-full border border-gold/50 bg-background/70 px-3 py-1 text-[10px] font-bold tracking-widest text-gold backdrop-blur-md">
-                <span className="relative flex h-1.5 w-1.5">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold/70" />
-                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-gold" />
-                </span>
-                LIVE
-              </span>
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/45 to-transparent" />
+            <div className="absolute inset-x-0 bottom-2 text-center">
+              <h1 className="gold-shimmer-text text-2xl font-black tracking-tight">{name}</h1>
+              <p className="text-[9px] uppercase tracking-[0.32em] text-muted-foreground">
+                AI Signal Predictor
+              </p>
             </div>
           </section>
 
-          {/* Prediction board */}
-          <section className="luxe-panel luxe-hairline animate-rise relative mt-5 overflow-hidden p-5">
-            <div className="pointer-events-none absolute -left-16 -top-16 h-48 w-48 rounded-full bg-primary/15 blur-[70px]" />
-            <div className="pointer-events-none absolute -bottom-16 -right-10 h-48 w-48 rounded-full bg-gold/10 blur-[70px]" />
+          {/* Quick chips */}
+          <div className="mt-3 grid grid-cols-3 gap-2">
+            <Chip label="Engine" value="AI v4" />
+            <Chip label="Mode" value={isRowGame ? "Rows" : "Timing"} />
+            <Chip label="Status" value={phase === "ready" ? "Enter" : "Live"} tone="text-accent" />
+          </div>
+
+          {/* Prediction console */}
+          <section className="animate-rise relative mt-4 overflow-hidden rounded-3xl border border-primary/25 bg-card/70 p-4 backdrop-blur-xl">
+            <div className="pointer-events-none absolute inset-0 opacity-[0.14] [background-image:linear-gradient(oklch(0.78_0.19_232/0.5)_1px,transparent_1px),linear-gradient(90deg,oklch(0.78_0.19_232/0.5)_1px,transparent_1px)] [background-size:26px_26px]" />
+            <div className="pointer-events-none absolute -left-14 -top-14 h-44 w-44 rounded-full bg-primary/20 blur-[70px]" />
 
             {kind !== "none" && (
               <>
-                <div className="relative flex items-center justify-between border-b border-gold/15 pb-3">
-                  <h2 className="gold-text text-xs font-black uppercase tracking-[0.3em]">
+                <div className="relative flex items-center justify-between border-b border-primary/20 pb-2.5">
+                  <h2 className="text-[10px] font-black uppercase tracking-[0.3em] text-accent">
                     Prediction
                   </h2>
                   <span className="text-[10px] font-semibold text-muted-foreground" dir="rtl">
@@ -262,25 +269,26 @@ function GamePredictor() {
             )}
 
             {/* Status / CTA */}
-            <div className="relative mt-6">
+            <div className="relative mt-5">
               {isRowGame ? (
-                <div className="space-y-3">
+                <div className="grid grid-cols-2 gap-3">
                   <button
                     type="button"
                     onClick={revealNextRow}
-                    className="gold-button luxe-sheen w-full rounded-2xl px-6 py-4 text-base font-black uppercase tracking-[0.25em] transition-transform active:scale-[0.98]"
+                    className="gold-button luxe-sheen rounded-2xl px-4 py-4 text-sm font-black uppercase tracking-[0.18em] transition-transform active:scale-95"
                   >
-                    <span className="relative z-10">{revealCount === 0 ? "بدأ" : "الصف التالي"}</span>
+                    <span className="relative z-10">
+                      {revealCount === 0 ? "بدأ" : "الصف التالي"}
+                    </span>
                   </button>
-                  {revealCount > 0 && (
-                    <button
-                      type="button"
-                      onClick={resetRows}
-                      className="w-full rounded-full border border-gold/30 px-5 py-2 text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground transition-colors hover:border-gold hover:text-gold"
-                    >
-                      توقع جديد
-                    </button>
-                  )}
+                  <button
+                    type="button"
+                    onClick={resetRows}
+                    disabled={revealCount === 0}
+                    className="rounded-2xl border border-primary/40 px-4 py-4 text-sm font-black uppercase tracking-[0.18em] text-muted-foreground transition-all hover:border-accent hover:text-accent active:scale-95 disabled:opacity-40"
+                  >
+                    إعادة
+                  </button>
                 </div>
               ) : null}
 
@@ -288,24 +296,24 @@ function GamePredictor() {
                 <button
                   type="button"
                   onClick={start}
-                  className="gold-button luxe-sheen w-full rounded-2xl px-6 py-4 text-base font-black uppercase tracking-[0.25em] transition-transform active:scale-[0.98]"
+                  className="gold-button luxe-sheen w-full rounded-2xl px-6 py-4 text-base font-black uppercase tracking-[0.22em] transition-transform active:scale-[0.98]"
                 >
                   <span className="relative z-10">بدأ</span>
                 </button>
               )}
 
               {!isRowGame && phase === "waiting" && (
-                <div className="luxe-panel p-5 text-center">
+                <div className="rounded-2xl border border-primary/30 bg-background/60 p-5 text-center">
                   <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
                     Enter at
                   </p>
-                  <p className="gold-text mt-1 font-mono text-2xl font-extrabold">
+                  <p className="mt-1 font-mono text-2xl font-extrabold text-accent">
                     {enterAt != null ? formatEnterTime(enterAt) : "--:--"}
                   </p>
                   <p className="mt-3 text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
                     Next entry in
                   </p>
-                  <p className="mt-1 font-mono text-4xl font-black text-foreground drop-shadow-[0_0_22px_oklch(0.78_0.19_232/0.35)]">
+                  <p className="mt-1 font-mono text-4xl font-black tabular-nums text-foreground">
                     {fmt(remaining)}
                   </p>
                   <p className="mt-2 text-xs text-muted-foreground" dir="rtl">
@@ -313,7 +321,7 @@ function GamePredictor() {
                   </p>
                   <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-muted/60">
                     <div
-                      className="h-full rounded-full bg-gradient-to-r from-gold-deep via-gold to-gold-soft transition-[width] duration-300"
+                      className="h-full rounded-full bg-gradient-to-r from-primary to-accent transition-[width] duration-300"
                       style={{
                         width: `${Math.min(100, Math.max(0, 100 - (remaining / total) * 100))}%`,
                       }}
@@ -323,22 +331,22 @@ function GamePredictor() {
               )}
 
               {!isRowGame && phase === "ready" && (
-                <div className="luxe-panel border-gold/60 p-6 text-center shadow-[0_0_60px_-15px_oklch(0.78_0.19_232/0.6)]">
-                  <p className="gold-text text-3xl font-black" dir="rtl">
+                <div className="rounded-2xl border border-accent/60 bg-background/60 p-6 text-center shadow-[0_0_50px_-18px_oklch(0.78_0.19_232/0.9)]">
+                  <p className="gold-shimmer-text text-3xl font-black" dir="rtl">
                     خش جيم 🚀
                   </p>
                   <p className="mt-2 text-xs text-muted-foreground" dir="rtl">
                     دخول الآن على {name} بالتوقع اللي فوق
                   </p>
-                  <p className="mt-1 font-mono text-xs text-gold">
+                  <p className="mt-1 font-mono text-xs text-accent">
                     {enterAt != null ? formatEnterTime(enterAt) : ""}
                   </p>
                   <button
                     type="button"
                     onClick={reset}
-                    className="mt-4 rounded-full border border-gold/30 px-5 py-2 text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground transition-colors hover:border-gold hover:text-gold"
+                    className="mt-4 rounded-full border border-primary/40 px-5 py-2 text-xs font-bold uppercase tracking-[0.22em] text-muted-foreground transition-colors hover:border-accent hover:text-accent"
                   >
-                    توقع جديد
+                    إعادة
                   </button>
                 </div>
               )}
@@ -354,12 +362,20 @@ function GamePredictor() {
   );
 }
 
+function Chip({ label, value, tone }: { label: string; value: string; tone?: string }) {
+  return (
+    <div className="rounded-xl border border-primary/20 bg-card/60 px-2 py-1.5 text-center backdrop-blur-md">
+      <p className="text-[8px] uppercase tracking-[0.2em] text-muted-foreground">{label}</p>
+      <p className={`mt-0.5 text-xs font-black ${tone ?? "text-foreground"}`}>{value}</p>
+    </div>
+  );
+}
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="luxe-panel p-3 text-center">
-      <p className="text-[9px] uppercase tracking-[0.28em] text-muted-foreground">{label}</p>
-      <p className="gold-text mt-1 text-lg font-black">{value}</p>
+    <div className="rounded-xl border border-primary/25 bg-background/50 p-3 text-center backdrop-blur-md">
+      <p className="text-[9px] uppercase tracking-[0.26em] text-muted-foreground">{label}</p>
+      <p className="mt-1 text-lg font-black text-accent">{value}</p>
     </div>
   );
 }
